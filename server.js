@@ -50,29 +50,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
 
 app.get('/api/guardia/hoy', async (req, res) => {
-    // Usamos el ID 33 (Santa Cruz) que es el que usa la web ahora
     const zonaId = req.query.z || 33; 
-    const url = `https://www.farmaciasdecanarias.com/?i=40&z=${zonaId}`;
+    // URL DEFINITIVA DE DATOS
+    const url = `https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${zonaId}`;
     
     try {
         const response = await axios.get(url, { 
-            headers: { 
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
-            }, 
+            headers: { 'User-Agent': 'Mozilla/5.0' }, 
             timeout: 10000 
         });
         
         const $ = cheerio.load(response.data); 
         const results = [];
         
-        // Buscamos en todas las tablas del HTML devuelto
-        $('table tr').each((i, el) => {
+        $('tr').each((i, el) => {
             const cells = $(el).find('td');
             if (cells.length >= 2) {
                 const n = $(cells[0]).text().trim();
                 const d = $(cells[1]).text().trim();
-                // Filtro de seguridad para capturar solo farmacias
-                if (n && n.length > 5 && (n.toLowerCase().includes('farmacia') || n.toLowerCase().includes('lcdo') || n.toLowerCase().includes('lcda'))) {
+                if (n && n.length > 5 && !n.includes('NOMBRE')) {
                     results.push({ 
                         nombre: n.replace(/\t|\n/g, ' '), 
                         direccion: d.replace(/\t|\n/g, ' ') 
@@ -96,4 +92,4 @@ app.get('*', (req, res) => {
 });
 
 loadDatos();
-app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Servidor listo`));
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 API en puerto ${PORT}`));
