@@ -28,26 +28,21 @@ async function loadDatos() {
                     lng: f.properties.longitud,
                     telefono: f.properties.telefono
                 }));
-            console.log(`✅ Datos cargados: ${datos.length}`);
         }
-    } catch (e) { console.error('Error GeoJSON:', e.message); }
+    } catch (e) { console.error(e.message); }
     finally { isDownloading = false; }
 }
 
 app.use(cors()); app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API Endpoints
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
 
 app.get('/api/guardia/hoy', async (req, res) => {
     const zonaId = req.query.z || 23;
     const url = `https://www.farmaciasdecanarias.com/?i=40&z=${zonaId}#features`;
     try {
-        const response = await axios.get(url, { 
-            headers: { 'User-Agent': 'Mozilla/5.0' }, 
-            timeout: 10000 
-        });
+        const response = await axios.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, timeout: 10000 });
         const $ = cheerio.load(response.data); 
         const results = [];
         $('table tr').each((i, el) => {
@@ -59,33 +54,22 @@ app.get('/api/guardia/hoy', async (req, res) => {
             }
         });
         res.json({ success: true, farmacias: results });
-    } catch (e) { res.status(500).json({ success: false, error: 'Error scraper', detail: e.message }); }
+    } catch (e) { 
+        res.status(500).json({ 
+            success: false, 
+            error: 'Error scraper', 
+            detail: e.message,
+            stack: e.stack 
+        }); 
+    }
 });
 
 app.get('/api/zonas', (req, res) => res.json({ success: true, zonas }));
-app.get('/api/municipios', (req, res) => {
-    const m = [...new Set(datos.map(f => f.municipio).filter(Boolean))].sort();
-    res.json({ success: true, municipios: m });
-});
+app.get('/api/municipios', (req, res) => res.json({ success: true, municipios: [...new Set(datos.map(f => f.municipio).filter(Boolean))].sort() }));
 app.get('/api/farmacias', (req, res) => res.json({ success: true, farmacias: datos }));
-app.get('/api/farmacias/municipio/:m', (req, res) => {
-    const m = req.params.m.toLowerCase();
-    const f = datos.filter(x => x.municipio?.toLowerCase().includes(m));
-    res.json({ success: true, farmacias: f });
-});
-app.get('/api/farmacia-random', (req, res) => {
-    if (datos.length === 0) return res.status(503).json({ error: 'Sincronizando...' });
-    res.json({ success: true, farmacia: datos[Math.floor(Math.random() * datos.length)] });
-});
 
-// Servir la web (usando FS para evitar errores de sendFile)
 app.get('*', (req, res) => {
-    const indexPath = path.join(__dirname, 'public', 'index.html');
-    if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath);
-    } else {
-        res.status(404).send('No se encuentra index.html en la carpeta public');
-    }
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 loadDatos();
