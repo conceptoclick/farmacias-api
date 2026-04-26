@@ -85,6 +85,20 @@ async function fetchData(url) {
 
     try {
         const response = await fetch(url);
+        const contentType = response.headers.get("content-type");
+        
+        if (!response.ok && response.status === 503) {
+            elements.jsonViewer.textContent = '// El servidor está sincronizando datos todavía. Un momento...';
+            return;
+        }
+
+        if (!contentType || !contentType.includes("application/json")) {
+            const text = await response.text();
+            elements.jsonViewer.textContent = `// Error del Servidor (No JSON):\n${text.substring(0, 500)}`;
+            elements.apiStatus.innerHTML = `<span class="pulse" style="background: #ef4444"></span> Error`;
+            return;
+        }
+        
         const duration = Math.round(performance.now() - startTime);
         const data = await response.json();
 
@@ -96,9 +110,10 @@ async function fetchData(url) {
         
         updateMap(data);
     } catch (error) {
-        elements.jsonViewer.textContent = `// Error al conectar con la API:\n${error.message}`;
-        elements.jsonViewer.style.opacity = '1';
-        elements.apiStatus.innerHTML = `<span class="pulse" style="background: #ef4444; box-shadow: 0 0 10px #ef4444"></span> API Offline`;
+        elements.jsonViewer.textContent = `// El servidor de Render está despertando o hay un problema de red.\n// Reintentando en 5 segundos...`;
+        elements.jsonViewer.style.opacity = '0.7';
+        elements.apiStatus.innerHTML = `<span class="pulse" style="background: #f59e0b"></span> Despertando...`;
+        setTimeout(() => fetchData(url), 5000);
     }
 }
 
