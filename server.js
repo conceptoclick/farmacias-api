@@ -50,15 +50,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
 
 app.get('/api/guardia/hoy', async (req, res) => {
-    const zonaId = req.query.z || 23; // 23 = Santa Cruz, 24 = La Laguna
-    // DIRECCIÓN SECRETA DE DATOS (AJAX)
-    const url = `https://www.farmaciasdecanarias.com/get_farmacias.php?i=40&z=${zonaId}`;
+    // Usamos el ID 33 (Santa Cruz) que es el que usa la web ahora
+    const zonaId = req.query.z || 33; 
+    const url = `https://www.farmaciasdecanarias.com/?i=40&z=${zonaId}`;
     
     try {
         const response = await axios.get(url, { 
             headers: { 
-                'User-Agent': 'Mozilla/5.0',
-                'Referer': 'https://www.farmaciasdecanarias.com/'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
             }, 
             timeout: 10000 
         });
@@ -66,19 +65,17 @@ app.get('/api/guardia/hoy', async (req, res) => {
         const $ = cheerio.load(response.data); 
         const results = [];
         
-        // La respuesta es un fragmento de HTML con una tabla
-        $('tr').each((i, el) => {
+        // Buscamos en todas las tablas del HTML devuelto
+        $('table tr').each((i, el) => {
             const cells = $(el).find('td');
             if (cells.length >= 2) {
                 const n = $(cells[0]).text().trim();
                 const d = $(cells[1]).text().trim();
-                const t = $(cells[2]).text().trim();
-                // Limpiamos el nombre de posibles ruidos
-                if (n && n.length > 5 && !n.includes('NOMBRE')) {
+                // Filtro de seguridad para capturar solo farmacias
+                if (n && n.length > 5 && (n.toLowerCase().includes('farmacia') || n.toLowerCase().includes('lcdo') || n.toLowerCase().includes('lcda'))) {
                     results.push({ 
                         nombre: n.replace(/\t|\n/g, ' '), 
-                        direccion: d.replace(/\t|\n/g, ' '),
-                        telefono: t
+                        direccion: d.replace(/\t|\n/g, ' ') 
                     });
                 }
             }
@@ -90,7 +87,7 @@ app.get('/api/guardia/hoy', async (req, res) => {
     }
 });
 
-app.get('/api/zonas', (req, res) => res.json({ success: true, zonas }));
+app.get('/api/zonas', (req, res) => res.json({ success: true, total: zonas.length, zonas }));
 app.get('/api/municipios', (req, res) => res.json({ success: true, municipios: [...new Set(datos.map(f => f.municipio).filter(Boolean))].sort() }));
 app.get('/api/farmacias', (req, res) => res.json({ success: true, farmacias: datos }));
 
@@ -99,4 +96,4 @@ app.get('*', (req, res) => {
 });
 
 loadDatos();
-app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Puerto: ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Servidor listo`));
