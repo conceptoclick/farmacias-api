@@ -39,7 +39,6 @@ async function loadDatos() {
                     lng: f.properties.longitud,
                     telefono: f.properties.telefono
                 }));
-            console.log(`✅ Datos cargados: ${datos.length}`);
         }
     } catch (e) { console.error('Error GeoJSON:', e.message); }
     finally { isDownloading = false; }
@@ -51,22 +50,44 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
 
 app.get('/api/guardia/hoy', async (req, res) => {
-    const zonaId = req.query.z || 23;
-    const url = `https://www.farmaciasdecanarias.com/?i=40&z=${zonaId}#features`;
+    const zonaId = req.query.z || 23; // 23 = Santa Cruz, 24 = La Laguna
+    // DIRECCIÓN SECRETA DE DATOS (AJAX)
+    const url = `https://www.farmaciasdecanarias.com/get_farmacias.php?i=40&z=${zonaId}`;
+    
     try {
-        const response = await axios.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, timeout: 10000 });
+        const response = await axios.get(url, { 
+            headers: { 
+                'User-Agent': 'Mozilla/5.0',
+                'Referer': 'https://www.farmaciasdecanarias.com/'
+            }, 
+            timeout: 10000 
+        });
+        
         const $ = cheerio.load(response.data); 
         const results = [];
-        $('table tr').each((i, el) => {
+        
+        // La respuesta es un fragmento de HTML con una tabla
+        $('tr').each((i, el) => {
             const cells = $(el).find('td');
             if (cells.length >= 2) {
                 const n = $(cells[0]).text().trim();
                 const d = $(cells[1]).text().trim();
-                if (n && n.toLowerCase().includes('farmacia')) results.push({ nombre: n, direccion: d });
+                const t = $(cells[2]).text().trim();
+                // Limpiamos el nombre de posibles ruidos
+                if (n && n.length > 5 && !n.includes('NOMBRE')) {
+                    results.push({ 
+                        nombre: n.replace(/\t|\n/g, ' '), 
+                        direccion: d.replace(/\t|\n/g, ' '),
+                        telefono: t
+                    });
+                }
             }
         });
-        res.json({ success: true, farmacias: results });
-    } catch (e) { res.status(500).json({ success: false, error: 'Error scraper', detail: e.message }); }
+
+        res.json({ success: true, zonaId, total: results.length, farmacias: results });
+    } catch (e) { 
+        res.status(500).json({ success: false, error: 'Error en el motor de búsqueda', detail: e.message }); 
+    }
 });
 
 app.get('/api/zonas', (req, res) => res.json({ success: true, zonas }));
