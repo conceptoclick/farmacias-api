@@ -1,3 +1,14 @@
+// PARCHE PARA RENDER (Soluciona "File is not defined" en Node 18)
+if (typeof File === 'undefined') {
+    global.File = class File extends (global.Blob || Array) {
+        constructor(parts, filename, options = {}) {
+            super(parts, options);
+            this.name = filename;
+            this.lastModified = options.lastModified || Date.now();
+        }
+    };
+}
+
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -28,8 +39,9 @@ async function loadDatos() {
                     lng: f.properties.longitud,
                     telefono: f.properties.telefono
                 }));
+            console.log(`✅ Datos cargados: ${datos.length}`);
         }
-    } catch (e) { console.error(e.message); }
+    } catch (e) { console.error('Error GeoJSON:', e.message); }
     finally { isDownloading = false; }
 }
 
@@ -54,14 +66,7 @@ app.get('/api/guardia/hoy', async (req, res) => {
             }
         });
         res.json({ success: true, farmacias: results });
-    } catch (e) { 
-        res.status(500).json({ 
-            success: false, 
-            error: 'Error scraper', 
-            detail: e.message,
-            stack: e.stack 
-        }); 
-    }
+    } catch (e) { res.status(500).json({ success: false, error: 'Error scraper', detail: e.message }); }
 });
 
 app.get('/api/zonas', (req, res) => res.json({ success: true, zonas }));
