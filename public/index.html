@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Farmacias - Tenerife Tester</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-mode">
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-flask-vial"></i>
+                <h1>Farmacias<span>API</span></h1>
+            </div>
+            <div class="status-badge" id="api-status">
+                <span class="pulse"></span>
+                Conectando...
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <!-- Sidebar: Endpoints -->
+            <aside class="sidebar">
+                <div class="card glass">
+                    <h3>Endpoints</h3>
+                    <nav id="endpoint-list">
+                        <button class="endpoint-btn active" data-url="/api/status">
+                            <span class="method get">GET</span>
+                            <span class="path">/status</span>
+                        </button>
+                        <button class="endpoint-btn" data-url="/api/zonas">
+                            <span class="method get">GET</span>
+                            <span class="path">/zonas</span>
+                        </button>
+                        <button class="endpoint-btn" data-url="/api/guardia/hoy">
+                            <span class="method get">GET</span>
+                            <span class="path">/guardia/hoy</span>
+                        </button>
+                        <button class="endpoint-btn" data-url="/api/municipios">
+                            <span class="method get">GET</span>
+                            <span class="path">/municipios</span>
+                        </button>
+                        <button class="endpoint-btn" data-url="/api/farmacias">
+                            <span class="method get">GET</span>
+                            <span class="path">/farmacias</span>
+                        </button>
+                        <button class="endpoint-btn" data-url="/api/farmacia-random" id="lucky-btn">
+                            <span class="method get">GET</span>
+                            <span class="path" style="color: var(--accent)">/farmacia-random</span>
+                        </button>
+                    </nav>
+
+                    <div class="divider"></div>
+
+                    <h3>Parámetros</h3>
+                    <div class="param-input">
+                        <label>Zona / Municipio / Nombre</label>
+                        <div class="input-group">
+                            <input type="text" id="param-value" placeholder="Ej: santa-cruz">
+                            <button id="run-param-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content: Response -->
+            <section class="content">
+                <div class="card glass response-card">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="json"><i class="fas fa-code"></i> JSON</button>
+                        <button class="tab-btn" data-tab="map"><i class="fas fa-map-marked-alt"></i> Mapa Vivo</button>
+                    </div>
+                    <div class="card-header">
+                        <div class="endpoint-display">
+                            <span class="method-label">GET</span>
+                            <code id="current-url">/api/status</code>
+                        </div>
+                        <div class="actions">
+                            <button id="copy-btn" title="Copiar JSON"><i class="far fa-copy"></i></button>
+                            <button id="refresh-btn" title="Refrescar"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="response-body">
+                        <div id="json-tab" class="tab-content active">
+                            <pre id="json-viewer">Cargando...</pre>
+                        </div>
+                        <div id="map-tab" class="tab-content">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span id="response-meta">Status: -- | Time: -- ms</span>
+                    </div>
+                </div>
+
+                <!-- Stats/Visuals -->
+                <div class="stats-grid">
+                    <div class="card glass stat-box">
+                        <span class="label">Farmacias Totales</span>
+                        <span class="value" id="stat-total">0</span>
+                    </div>
+                    <div class="card glass stat-box">
+                        <span class="label">Zonas Configuradas</span>
+                        <span class="value" id="stat-zonas">0</span>
+                    </div>
+                    <div class="card glass stat-box">
+                        <span class="label">Ubicación</span>
+                        <span class="value">Tenerife, ES</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 API Farmacias Tenerife - Tester Premium</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

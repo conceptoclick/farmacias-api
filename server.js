@@ -23,6 +23,8 @@ async function loadDatos() {
 }
 
 app.use(cors()); app.use(express.json());
+app.use(express.static('public'));
+
 app.get('/api/zonas', (req, res) => res.json({ success: true, total: zonas.length, zonas }));
 app.get('/api/zonas/:id', (req, res) => { const z = zonas.find(z => z.id === req.params.id); if (!z) return res.status(404).json({ error: 'Zona no encontrada' }); res.json({ success: true, zona: z }); });
 app.get('/api/guardia/hoy', async (req, res) => {
@@ -45,6 +47,7 @@ app.get('/api/farmacias', (req, res) => res.json({ success: true, total: datos.l
 app.get('/api/farmacias/:codigo', (req, res) => { const f = datos.find(x => x.nombre === req.params.codigo); if (!f) return res.status(404).json({ error: 'No encontrada' }); res.json(f); });
 app.get('/api/municipios', (req, res) => { const m = [...new Set(datos.map(f => f.municipio_nombre).filter(Boolean))]; res.json({ success: true, total: m.length, municipios: m }); });
 app.get('/api/farmacias/municipio/:m', (req, res) => { const m = req.params.m.toLowerCase(); const f = datos.filter(x => x.municipio_nombre?.toLowerCase().includes(m)); res.json({ success: true, total: f.length, farmacias: f }); });
+app.get('/api/farmacia-random', (req, res) => { if (datos.length === 0) return res.status(503).json({ error: 'Datos no cargados' }); const f = datos[Math.floor(Math.random() * datos.length)]; res.json({ success: true, farmacia: f }); });
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length, zonas: zonas.length, timestamp: new Date().toISOString() }));
 
 loadDatos().then(() => app.listen(PORT, () => console.log('🧪 API Farmacias Guardia Tenerife - http://localhost:' + PORT)));
