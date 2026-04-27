@@ -71,6 +71,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
 
+// Cache temporal para evitar saturar servicios de geocodificación
+const geocodeCache = new Map();
+
+async function geocodeAddress(address) {
+    if (geocodeCache.has(address)) return geocodeCache.get(address);
+    try {
+        const query = encodeURIComponent(address + ", Tenerife, España");
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`;
+        const response = await axios.get(url, { 
+            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.0 (conceptoclick)' },
+            timeout: 5000 
+        });
+        if (response.data && response.data.length > 0) {
+            const coords = {
+                lat: parseFloat(response.data[0].lat),
+                lng: parseFloat(response.data[0].lon)
+            };
+            geocodeCache.set(address, coords);
+            return coords;
+        }
+    } catch (e) {
+        console.log(`⚠️ Error geocodificando "${address}": ${e.message}`);
+    }
+    return null;
+}
+
 // --- NUEVO ENDPOINT: GUARDIAS CERCANAS ---
 app.get('/api/guardia/cerca', async (req, res) => {
     const userLat = parseFloat(req.query.lat);
@@ -83,8 +109,6 @@ app.get('/api/guardia/cerca', async (req, res) => {
 
     console.log(`🔍 Buscando guardias cerca de: ${userLat}, ${userLng} (Radio: ${radio}km)`);
 
-    // Zonas de Tenerife (y algunas de otras islas si fuera necesario)
-    // 1-30 suelen cubrir la mayoría de zonas importantes de Tenerife
     const zonasAConsultar = [
         33, 24, 1, 22, 13, 8, 2, 3, 4, 5, 6, 7, 9, 10, 
         11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 
@@ -96,10 +120,7 @@ app.get('/api/guardia/cerca', async (req, res) => {
             axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
                 headers: { 'User-Agent': 'Mozilla/5.0' },
                 timeout: 8000 
-            }).catch(e => {
-                console.log(`⚠️ Error en zona ${z}: ${e.message}`);
-                return null;
-            })
+            }).catch(e => null)
         );
         
         const responses = await Promise.all(fetchPromises);
@@ -127,33 +148,46 @@ app.get('/api/guardia/cerca', async (req, res) => {
             });
         });
 
-        console.log(`📡 Guardias encontradas en web: ${uniqueGuardias.size}`);
-
-        // Cruce de datos con nuestra base de datos GeoJSON para obtener coordenadas
         const results = [];
-        uniqueGuardias.forEach((info, normName) => {
-            // Buscamos coincidencia en nuestra base de datos local de farmacias
-            // Probamos coincidencia exacta o contenida
+        // Usamos un bucle for...of para poder usar await (geocodificación secuencial suave)
+        for (const [normName, info] of uniqueGuardias) {
+            let lat, lng, municipio;
+
+            // 1. Intentar match en base de datos local (GeoJSON)
             const match = datos.find(d => {
                 const dNorm = normalizeName(d.nombre);
                 return dNorm === normName || dNorm.includes(normName) || normName.includes(dNorm);
             });
             
             if (match) {
-                const dist = calculateDistance(userLat, userLng, match.lat, match.lng);
+                lat = match.lat;
+                lng = match.lng;
+                municipio = match.municipio;
+            } else {
+                // 2. Fallback: Geocodificación externa si no está en nuestra DB
+                console.log(`🌐 Buscando coordenadas externas para: ${info.nombre}`);
+                const coords = await geocodeAddress(info.direccion);
+                if (coords) {
+                    lat = coords.lat;
+                    lng = coords.lng;
+                    municipio = "Desconocido (Geocodificado)";
+                }
+            }
+
+            if (lat && lng) {
+                const dist = calculateDistance(userLat, userLng, lat, lng);
                 if (dist <= radio) {
                     results.push({ 
                         ...info, 
-                        lat: match.lat, 
-                        lng: match.lng, 
+                        lat, 
+                        lng, 
                         distanciaKm: Math.round(dist * 100) / 100,
-                        municipio: match.municipio
+                        municipio: municipio || "Tenerife"
                     });
                 }
             }
-        });
+        }
 
-        // Ordenar por cercanía
         results.sort((a, b) => a.distanciaKm - b.distanciaKm);
 
         res.json({ 
@@ -163,10 +197,8 @@ app.get('/api/guardia/cerca', async (req, res) => {
             farmacias: results
         });
 
-        console.log(`✅ Enviando ${results.length} farmacias cercanas.`);
-
     } catch (e) {
-        console.error('❌ Error general en /api/guardia/cerca:', e);
+        console.error('❌ Error en búsqueda geoespacial:', e);
         res.status(500).json({ error: 'Error en búsqueda geoespacial', detail: e.message });
     }
 });
