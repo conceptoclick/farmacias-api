@@ -77,14 +77,29 @@ app.get('/api/guardia/cerca', async (req, res) => {
     const userLng = parseFloat(req.query.lng);
     const radio = parseFloat(req.query.radio) || 15; // 15km por defecto
 
-    if (!userLat || !userLng) return res.status(400).json({ error: 'Faltan parámetros lat y lng' });
+    if (isNaN(userLat) || isNaN(userLng)) {
+        return res.status(400).json({ error: 'Faltan parámetros lat y lng válidos' });
+    }
 
-    // Zonas clave para cobertura total de Tenerife
-    const zonasAConsultar = [33, 24, 1, 22, 13, 8]; 
+    console.log(`🔍 Buscando guardias cerca de: ${userLat}, ${userLng} (Radio: ${radio}km)`);
+
+    // Zonas de Tenerife (y algunas de otras islas si fuera necesario)
+    // 1-30 suelen cubrir la mayoría de zonas importantes de Tenerife
+    const zonasAConsultar = [
+        33, 24, 1, 22, 13, 8, 2, 3, 4, 5, 6, 7, 9, 10, 
+        11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 
+        26, 27, 28, 29, 30, 31, 32, 34, 35
+    ]; 
     
     try {
         const fetchPromises = zonasAConsultar.map(z => 
-            axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { timeout: 10000 }).catch(e => null)
+            axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
+                headers: { 'User-Agent': 'Mozilla/5.0' },
+                timeout: 8000 
+            }).catch(e => {
+                console.log(`⚠️ Error en zona ${z}: ${e.message}`);
+                return null;
+            })
         );
         
         const responses = await Promise.all(fetchPromises);
@@ -98,24 +113,30 @@ app.get('/api/guardia/cerca', async (req, res) => {
                 if (cells.length >= 2) {
                     const n = $(cells[0]).text().trim();
                     if (n && n.length > 5 && !n.includes('NOMBRE')) {
-                        const info = { 
-                            nombre: n.replace(/\t|\n/g, ' ').trim(), 
-                            direccion: $(cells[1]).text().trim(),
-                            telefono: $(cells[2]).text().trim()
-                        };
-                        uniqueGuardias.set(normalizeName(n), info);
+                        const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
+                        const norm = normalizeName(nombreLimpio);
+                        if (!uniqueGuardias.has(norm)) {
+                            uniqueGuardias.set(norm, { 
+                                nombre: nombreLimpio, 
+                                direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
+                                telefono: $(cells[2])?.text()?.trim() || "---"
+                            });
+                        }
                     }
                 }
             });
         });
 
-        // Cruce de datos con coordenadas
+        console.log(`📡 Guardias encontradas en web: ${uniqueGuardias.size}`);
+
+        // Cruce de datos con nuestra base de datos GeoJSON para obtener coordenadas
         const results = [];
         uniqueGuardias.forEach((info, normName) => {
-            // Buscamos coincidencia en nuestra base de datos local
+            // Buscamos coincidencia en nuestra base de datos local de farmacias
+            // Probamos coincidencia exacta o contenida
             const match = datos.find(d => {
                 const dNorm = normalizeName(d.nombre);
-                return dNorm.includes(normName) || normName.includes(dNorm);
+                return dNorm === normName || dNorm.includes(normName) || normName.includes(dNorm);
             });
             
             if (match) {
@@ -132,13 +153,20 @@ app.get('/api/guardia/cerca', async (req, res) => {
             }
         });
 
+        // Ordenar por cercanía
+        results.sort((a, b) => a.distanciaKm - b.distanciaKm);
+
         res.json({ 
             success: true, 
             filtros: { lat: userLat, lng: userLng, radioKm: radio },
             total: results.length, 
-            farmacias: results.sort((a, b) => a.distanciaKm - b.distanciaKm) 
+            farmacias: results
         });
+
+        console.log(`✅ Enviando ${results.length} farmacias cercanas.`);
+
     } catch (e) {
+        console.error('❌ Error general en /api/guardia/cerca:', e);
         res.status(500).json({ error: 'Error en búsqueda geoespacial', detail: e.message });
     }
 });
