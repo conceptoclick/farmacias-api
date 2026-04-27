@@ -127,15 +127,34 @@ function updateMap(data) {
         pharmacies = data;
     }
 
+    // Si hay filtros de ubicación en la respuesta, marcar el centro
+    if (data.filtros && data.filtros.lat && data.filtros.lng) {
+        L.circle([data.filtros.lat, data.filtros.lng], {
+            radius: (data.filtros.radioKm || 1) * 1000,
+            color: 'var(--primary)',
+            fillOpacity: 0.1,
+            dashArray: '5, 10'
+        }).addTo(markerLayer);
+        
+        L.marker([data.filtros.lat, data.filtros.lng], {
+            icon: L.divIcon({
+                className: 'user-marker',
+                html: '<i class="fas fa-street-view" style="color: white; font-size: 20px;"></i>',
+                iconSize: [20, 20]
+            })
+        }).bindPopup("Tu búsqueda").addTo(markerLayer);
+    }
+
     if (pharmacies.length > 0) {
         pharmacies.forEach(f => {
-            const lat = f.latitud || (f.coordenadas && f.coordenadas.lat);
-            const lng = f.longitud || (f.coordenadas && f.coordenadas.lng);
+            const lat = f.latitud || (f.coordenadas && f.coordenadas.lat) || f.lat;
+            const lng = f.longitud || (f.coordenadas && f.coordenadas.lng) || f.lng;
             if (lat && lng) {
                 const marker = L.marker([lat, lng]).bindPopup(`
                     <div style="color: black">
                         <strong>${f.nombre}</strong><br>
                         ${f.direccion || f.direccion_nombre_via || ''}<br>
+                        ${f.distanciaKm ? `<b>Distancia:</b> ${f.distanciaKm} km<br>` : ''}
                         <small>${f.telefono || ''}</small>
                     </div>
                 `);
