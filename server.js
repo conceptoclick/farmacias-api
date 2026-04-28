@@ -22,6 +22,9 @@ const PORT = process.env.PORT || 3000;
 
 let datos = [];
 let isDownloading = false;
+let cacheGuardias = [];
+let lastUpdate = null;
+let isRefreshing = false;
 
 // Funciones de utilidad para Geolocalización
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -61,6 +64,9 @@ async function loadDatos() {
                     telefono: f.properties.telefono
                 }));
             console.log(`✅ Base de datos cargada: ${datos.length} farmacias.`);
+            
+            // Una vez cargada la base de datos, refrescamos las guardias
+            updateGuardiasCache();
         }
     } catch (e) { console.error('Error GeoJSON:', e.message); }
     finally { isDownloading = false; }
@@ -69,7 +75,13 @@ async function loadDatos() {
 app.use(cors()); app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/status', (req, res) => res.json({ status: 'ok', farmacias: datos.length }));
+app.get('/api/status', (req, res) => res.json({ 
+    status: 'ok', 
+    farmacias: datos.length, 
+    guardiasCached: cacheGuardias.length,
+    lastUpdate,
+    isRefreshing
+}));
 
 // Cache temporal para evitar saturar servicios de geocodificación
 const geocodeCache = new Map();
@@ -77,10 +89,11 @@ const geocodeCache = new Map();
 async function geocodeAddress(address) {
     if (geocodeCache.has(address)) return geocodeCache.get(address);
     try {
-        const query = encodeURIComponent(address + ", Tenerife, España");
+        // Mejoramos la query añadiendo "Canarias" para mayor precisión
+        const query = encodeURIComponent(address + ", Tenerife, Canarias, España");
         const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`;
         const response = await axios.get(url, { 
-            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.0 (conceptoclick)' },
+            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.1 (conceptoclick)' },
             timeout: 5000 
         });
         if (response.data && response.data.length > 0) {
@@ -97,21 +110,15 @@ async function geocodeAddress(address) {
     return null;
 }
 
-// --- NUEVO ENDPOINT: GUARDIAS CERCANAS ---
-app.get('/api/guardia/cerca', async (req, res) => {
-    const userLat = parseFloat(req.query.lat);
-    const userLng = parseFloat(req.query.lng);
-    const radio = parseFloat(req.query.radio) || 15; // 15km por defecto
-
-    if (isNaN(userLat) || isNaN(userLng)) {
-        return res.status(400).json({ error: 'Faltan parámetros lat y lng válidos' });
-    }
-
-    console.log(`🔍 Buscando guardias cerca de: ${userLat}, ${userLng} (Radio: ${radio}km)`);
+// Función para refrescar el caché de guardias (Background Task)
+async function updateGuardiasCache() {
+    if (isRefreshing) return;
+    isRefreshing = true;
+    console.log("🔄 Refrescando caché de farmacias de guardia...");
 
     const zonasAConsultar = [
-        33, 24, 1, 22, 13, 8, 2, 3, 4, 5, 6, 7, 9, 10, 
-        11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 
+        33, 24, 1, 22, 13, 8, 2, 3, 4, 5, 6, 7, 9, 10,  
+        11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25,  
         26, 27, 28, 29, 30, 31, 32, 34, 35
     ]; 
     
@@ -148,12 +155,10 @@ app.get('/api/guardia/cerca', async (req, res) => {
             });
         });
 
-        const results = [];
-        // Usamos un bucle for...of para poder usar await (geocodificación secuencial suave)
+        const updatedList = [];
         for (const [normName, info] of uniqueGuardias) {
             let lat, lng, municipio;
 
-            // 1. Intentar match en base de datos local (GeoJSON)
             const match = datos.find(d => {
                 const dNorm = normalizeName(d.nombre);
                 return dNorm === normName || dNorm.includes(normName) || normName.includes(dNorm);
@@ -164,70 +169,80 @@ app.get('/api/guardia/cerca', async (req, res) => {
                 lng = match.lng;
                 municipio = match.municipio;
             } else {
-                // 2. Fallback: Geocodificación externa si no está en nuestra DB
-                console.log(`🌐 Buscando coordenadas externas para: ${info.nombre}`);
+                // Fallback: Geocodificación (con delay para no saturar Nominatim)
+                await new Promise(r => setTimeout(r, 1000)); // 1 req/sec limit
                 const coords = await geocodeAddress(info.direccion);
                 if (coords) {
                     lat = coords.lat;
                     lng = coords.lng;
-                    municipio = "Desconocido (Geocodificado)";
+                    municipio = "Localizada por GPS";
                 }
             }
 
             if (lat && lng) {
-                const dist = calculateDistance(userLat, userLng, lat, lng);
-                if (dist <= radio) {
-                    results.push({ 
-                        ...info, 
-                        lat, 
-                        lng, 
-                        distanciaKm: Math.round(dist * 100) / 100,
-                        municipio: municipio || "Tenerife"
-                    });
-                }
+                updatedList.push({ ...info, lat, lng, municipio: municipio || "Tenerife" });
             }
         }
 
-        results.sort((a, b) => a.distanciaKm - b.distanciaKm);
-
-        res.json({ 
-            success: true, 
-            filtros: { lat: userLat, lng: userLng, radioKm: radio },
-            total: results.length, 
-            farmacias: results
-        });
-
+        cacheGuardias = updatedList;
+        lastUpdate = new Date().toISOString();
+        console.log(`✅ Caché actualizado: ${cacheGuardias.length} farmacias de guardia.`);
     } catch (e) {
-        console.error('❌ Error en búsqueda geoespacial:', e);
-        res.status(500).json({ error: 'Error en búsqueda geoespacial', detail: e.message });
+        console.error('❌ Error refrescando caché:', e);
+    } finally {
+        isRefreshing = false;
     }
+}
+
+// Refrescar cada 60 minutos
+setInterval(updateGuardiasCache, 60 * 60 * 1000);
+
+// --- ENDPOINT: GUARDIAS CERCANAS (Instantáneo) ---
+app.get('/api/guardia/cerca', async (req, res) => {
+    const userLat = parseFloat(req.query.lat);
+    const userLng = parseFloat(req.query.lng);
+    const radio = parseFloat(req.query.radio) || 15;
+
+    if (isNaN(userLat) || isNaN(userLng)) {
+        return res.status(400).json({ error: 'Faltan parámetros lat y lng válidos' });
+    }
+
+    if (cacheGuardias.length === 0 && isRefreshing) {
+        return res.status(503).json({ error: 'Sincronizando datos, reintenta en unos segundos' });
+    }
+
+    const results = cacheGuardias
+        .map(f => {
+            const dist = calculateDistance(userLat, userLng, f.lat, f.lng);
+            return { ...f, distanciaKm: Math.round(dist * 100) / 100 };
+        })
+        .filter(f => f.distanciaKm <= radio)
+        .sort((a, b) => a.distanciaKm - b.distanciaKm);
+
+    res.json({ 
+        success: true, 
+        filtros: { lat: userLat, lng: userLng, radioKm: radio },
+        total: results.length, 
+        lastUpdate,
+        farmacias: results
+    });
 });
 
-// Mantener el resto de endpoints...
 app.get('/api/guardia/hoy', async (req, res) => {
-    const zonaId = req.query.z || 33;
-    const url = `https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${zonaId}`;
-    try {
-        const response = await axios.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, timeout: 10000 });
-        const $ = cheerio.load(response.data); 
-        const results = [];
-        $('tr').each((i, el) => {
-            const cells = $(el).find('td');
-            if (cells.length >= 2) {
-                const n = $(cells[0]).text().trim();
-                const d = $(cells[1]).text().trim();
-                if (n && n.length > 5 && !n.includes('NOMBRE')) {
-                    results.push({ nombre: n, direccion: d });
-                }
-            }
-        });
-        res.json({ success: true, zonaId, total: results.length, farmacias: results });
-    } catch (e) { res.status(500).json({ success: false, error: 'Error scraper' }); }
+    // Mantener compatibilidad pero servir desde el cache global si es posible
+    res.json({ success: true, total: cacheGuardias.length, farmacias: cacheGuardias });
 });
 
 app.get('/api/zonas', (req, res) => res.json({ success: true, total: zonas.length, zonas }));
 app.get('/api/municipios', (req, res) => res.json({ success: true, municipios: [...new Set(datos.map(f => f.municipio).filter(Boolean))].sort() }));
 app.get('/api/farmacias', (req, res) => res.json({ success: true, farmacias: datos }));
+
+app.get('/api/farmacia-random', (req, res) => {
+    if (datos.length === 0) return res.status(503).json({ error: 'Datos no listos' });
+    const random = datos[Math.floor(Math.random() * datos.length)];
+    res.json({ success: true, farmacia: random });
+});
+
 app.get('/api/farmacias/municipio/:m', (req, res) => {
     const m = req.params.m.toLowerCase();
     const f = datos.filter(x => x.municipio?.toLowerCase().includes(m));
