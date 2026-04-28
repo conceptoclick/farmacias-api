@@ -149,7 +149,8 @@ function updateMap(data) {
         pharmacies.forEach(f => {
             const lat = f.latitud || (f.coordenadas && f.coordenadas.lat) || f.lat;
             const lng = f.longitud || (f.coordenadas && f.coordenadas.lng) || f.lng;
-            if (lat && lng) {
+            // Validar coordenadas antes de añadir marcador
+            if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
                 const marker = L.marker([lat, lng]).bindPopup(`
                     <div style="color: black">
                         <strong>${f.nombre}</strong><br>
