@@ -16,11 +16,12 @@ const path = require('path');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const zonas = require('./src/zonas');
+const farmaciasMaestras = require('./src/farmacias_maestras.json');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-let datos = [];
+let datos = [...farmaciasMaestras]; // Iniciamos con nuestra base de datos maestra
 let isDownloading = false;
 let cacheGuardias = [];
 let lastUpdate = null;
@@ -51,9 +52,12 @@ async function loadDatos() {
     if (isDownloading) return;
     isDownloading = true;
     try {
-        const response = await axios.get('https://datos.tenerife.es/ckan/dataset/7d98949a-1e2f-4bdc-9280-83b81da0be35/resource/cc411345-4269-4e73-84d6-edb8a9598886/download/centros-medicos-farmacias-y-servicios-sanitarios-en-tenerife.geojson', { timeout: 30000 });
+        console.log("📂 Cargando base de datos maestra...");
+        // Intentamos actualizar la base de datos desde el Cabildo para ver si hay cambios
+        const response = await axios.get('https://datos.tenerife.es/ckan/dataset/7d98949a-1e2f-4bdc-9280-83b81da0be35/resource/cc411345-4269-4e73-84d6-edb8a9598886/download/centros-medicos-farmacias-y-servicios-sanitarios-en-tenerife.geojson', { timeout: 15000 });
+        
         if (response.data && response.data.features) {
-            datos = response.data.features
+            const freshData = response.data.features
                 .filter(f => f.properties && f.properties.actividad_tipo === 'farmacia')
                 .map(f => ({
                     nombre: f.properties.nombre, 
@@ -63,13 +67,23 @@ async function loadDatos() {
                     lng: parseFloat(f.properties.longitud),
                     telefono: f.properties.telefono
                 }));
-            console.log(`✅ Base de datos cargada: ${datos.length} farmacias.`);
             
-            // Una vez cargada la base de datos, refrescamos las guardias
-            updateGuardiasCache();
+            // Mezclamos: datos nuevos del Cabildo + nuestra maestra (la maestra manda en caso de conflicto)
+            const map = new Map();
+            [...freshData, ...farmaciasMaestras].forEach(f => {
+                map.set(normalizeName(f.nombre), f);
+            });
+            datos = Array.from(map.values());
+            console.log(`✅ Base de datos unificada: ${datos.length} farmacias totales.`);
         }
-    } catch (e) { console.error('Error GeoJSON:', e.message); }
-    finally { isDownloading = false; }
+    } catch (e) { 
+        console.warn('⚠️ No se pudo bajar el GeoJSON fresco, usando solo la base maestra local.');
+        datos = farmaciasMaestras;
+    } finally {
+        isDownloading = false;
+        // Lanzamos el primer refresco de guardias
+        updateGuardiasCache();
+    }
 }
 
 app.use(cors()); app.use(express.json());

@@ -1,0 +1,2602 @@
+[
+  {
+    "nombre": "Botiquin Chimiche",
+    "direccion": "General TF 28 Sur 7",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.13471639,
+    "lng": -16.531044,
+    "telefono": 922170196
+  },
+  {
+    "nombre": "Botiquin Farmaceutico Charco del Pino",
+    "direccion": "Mencey 14",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.11163939,
+    "lng": -16.592476,
+    "telefono": 922771909
+  },
+  {
+    "nombre": "Botiquin Fermaceutico El Palmar",
+    "direccion": "La Esquina sn",
+    "municipio": "Buenavista del Norte",
+    "lat": 28.34487497,
+    "lng": -16.84616699,
+    "telefono": null
+  },
+  {
+    "nombre": "Farmacia Acevedo Gonzalez",
+    "direccion": "Calvario 3",
+    "municipio": "La Laguna",
+    "lat": 28.51823199,
+    "lng": -16.389627,
+    "telefono": 922540212
+  },
+  {
+    "nombre": "Farmacia Acevedo Martin",
+    "direccion": "Juan Gonzalez de la Torre 2",
+    "municipio": "Garachico",
+    "lat": 28.37246874,
+    "lng": -16.76569144,
+    "telefono": 922830356
+  },
+  {
+    "nombre": "Farmacia Acosta Acevedo",
+    "direccion": "San Agustin 92",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36926249,
+    "lng": -16.71482871,
+    "telefono": 922121364
+  },
+  {
+    "nombre": "Farmacia Acosta Ortega",
+    "direccion": "Arzobispo Elias Yanes 1",
+    "municipio": "La Laguna",
+    "lat": 28.49023999,
+    "lng": -16.329744,
+    "telefono": 922258805
+  },
+  {
+    "nombre": "Farmacia Afonso Acosta",
+    "direccion": "Diana 1",
+    "municipio": "Arona",
+    "lat": 28.01139599,
+    "lng": -16.647324,
+    "telefono": 922785131
+  },
+  {
+    "nombre": "Farmacia Afonso Carrillo",
+    "direccion": "San Telmo 4",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41712399,
+    "lng": -16.54751,
+    "telefono": 922383925
+  },
+  {
+    "nombre": "Farmacia Afonso Catalan",
+    "direccion": "Juan Carlos I 16",
+    "municipio": "Arona",
+    "lat": 28.05616999,
+    "lng": -16.712309,
+    "telefono": 922795025
+  },
+  {
+    "nombre": "Farmacia Alfonso Arvelo",
+    "direccion": "La Constitucion 18",
+    "municipio": "Arona",
+    "lat": 28.09788298,
+    "lng": -16.68243199,
+    "telefono": 922725505
+  },
+  {
+    "nombre": "Farmacia Alfonso Garcia",
+    "direccion": "Alcalde Mandillo Tejera 27",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46132999,
+    "lng": -16.272554,
+    "telefono": 922218328
+  },
+  {
+    "nombre": "Farmacia Alfonso Leon",
+    "direccion": "Garachico Prolongacion 5",
+    "municipio": "La Laguna",
+    "lat": 28.47165545,
+    "lng": -16.2798041,
+    "telefono": 922211110
+  },
+  {
+    "nombre": "Farmacia Alfonso Leon",
+    "direccion": "Coronel Gorrin 34",
+    "municipio": "Santiago del Teide",
+    "lat": 28.26917299,
+    "lng": -16.818928,
+    "telefono": 922863450
+  },
+  {
+    "nombre": "Farmacia Almeida Rodriguez",
+    "direccion": "Las Americas 48",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.37795599,
+    "lng": -16.723049,
+    "telefono": 922812651
+  },
+  {
+    "nombre": "Farmacia Alonso Duranza",
+    "direccion": "General TF 13 Punta Hidalgo 94",
+    "municipio": "La Laguna",
+    "lat": 28.56725699,
+    "lng": -16.328403,
+    "telefono": 922156383
+  },
+  {
+    "nombre": "Farmacia Alvarez Hernandez",
+    "direccion": "Lucas Vega 98",
+    "municipio": "La Laguna",
+    "lat": 28.49031999,
+    "lng": -16.326708,
+    "telefono": 922252719
+  },
+  {
+    "nombre": "Farmacia Alvarez Martin",
+    "direccion": "General TF 320 Icod Santa Cruz 0",
+    "municipio": "La Orotava",
+    "lat": 28.39532499,
+    "lng": -16.554825,
+    "telefono": 922375097
+  },
+  {
+    "nombre": "Farmacia Angulo Hernandez",
+    "direccion": "Martin de Andujar 5",
+    "municipio": "Garachico",
+    "lat": 28.37242505,
+    "lng": -16.76437662,
+    "telefono": 922830354
+  },
+  {
+    "nombre": "Farmacia Armas Alonso",
+    "direccion": "Bencomo 6",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41038899,
+    "lng": -16.564363,
+    "telefono": 922380006
+  },
+  {
+    "nombre": "Farmacia Armas Hernandez",
+    "direccion": "Republica Argentina 131",
+    "municipio": "La Laguna",
+    "lat": 28.51144999,
+    "lng": -16.306736,
+    "telefono": 922268679
+  },
+  {
+    "nombre": "Farmacia Aureliano",
+    "direccion": "Francisco Miranda 17",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36922962,
+    "lng": -16.72063548,
+    "telefono": 922813351
+  },
+  {
+    "nombre": "Farmacia Avenida",
+    "direccion": "Aceitilla 3",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.42429674,
+    "lng": -16.30305704,
+    "telefono": 822174833
+  },
+  {
+    "nombre": "Farmacia Avenida de Canarias",
+    "direccion": "Canarias 37",
+    "municipio": "Los Realejos",
+    "lat": 28.3869179,
+    "lng": -16.5847401,
+    "telefono": 822144884
+  },
+  {
+    "nombre": "Farmacia Barrera",
+    "direccion": "Periodista Ernesto Salcedo 3",
+    "municipio": "Candelaria",
+    "lat": 28.35496289,
+    "lng": -16.37023413,
+    "telefono": 922501827
+  },
+  {
+    "nombre": "Farmacia Barrionuevo Moral",
+    "direccion": "Tacoronte 4",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47228399,
+    "lng": -16.277071,
+    "telefono": 922220762
+  },
+  {
+    "nombre": "Farmacia Bello Hernandez",
+    "direccion": "General TF 28 Sur 83",
+    "municipio": "Arona",
+    "lat": 28.09085499,
+    "lng": -16.65653599,
+    "telefono": 922765200
+  },
+  {
+    "nombre": "Farmacia Bello Toledo",
+    "direccion": "Rector Benito Rodriguez Rios 4",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41128899,
+    "lng": -16.541945,
+    "telefono": 922370655
+  },
+  {
+    "nombre": "Farmacia Bencomo Ascanio",
+    "direccion": "Los Menceyes 375",
+    "municipio": "La Laguna",
+    "lat": 28.46828699,
+    "lng": -16.28693,
+    "telefono": 922645054
+  },
+  {
+    "nombre": "Farmacia Bencomo Duque",
+    "direccion": "General TF 256 El Tablero 48",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.42348699,
+    "lng": -16.333183,
+    "telefono": 922614101
+  },
+  {
+    "nombre": "Farmacia Bencomo Perez",
+    "direccion": "Junta Suprema 4",
+    "municipio": "La Laguna",
+    "lat": 28.49083099,
+    "lng": -16.319084,
+    "telefono": 922257755
+  },
+  {
+    "nombre": "Farmacia Bercedo Duque",
+    "direccion": "Conde Pallasar 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45674099,
+    "lng": -16.286411,
+    "telefono": 922646308
+  },
+  {
+    "nombre": "Farmacia Blesa del Hoyo",
+    "direccion": "Bulevar Chajofe 6",
+    "municipio": "Arona",
+    "lat": 28.05403898,
+    "lng": -16.7143,
+    "telefono": 922752164
+  },
+  {
+    "nombre": "Farmacia Bonachera Reveron",
+    "direccion": "Los Abrigos 17",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.02992999,
+    "lng": -16.592531,
+    "telefono": 922170196
+  },
+  {
+    "nombre": "Farmacia Bonnet Perez",
+    "direccion": "Ernesto Sarti 12",
+    "municipio": "Adeje",
+    "lat": 28.08491299,
+    "lng": -16.732031,
+    "telefono": 922719048
+  },
+  {
+    "nombre": "Farmacia Botiquin Vidarte Chico",
+    "direccion": "Chicoro 149",
+    "municipio": "Candelaria",
+    "lat": 28.3623456,
+    "lng": -16.39359438,
+    "telefono": null
+  },
+  {
+    "nombre": "Farmacia Buenavista",
+    "direccion": "Daute 8",
+    "municipio": "Buenavista del Norte",
+    "lat": 28.3741486,
+    "lng": -16.85081195,
+    "telefono": 922127132
+  },
+  {
+    "nombre": "Farmacia Bueno Felipe",
+    "direccion": "Los Majuelos 74",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.43216351,
+    "lng": -16.32080605,
+    "telefono": 922629609
+  },
+  {
+    "nombre": "Farmacia Cabrera Cremades",
+    "direccion": "General TF 192 El Rosario 101",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.4518895,
+    "lng": -16.2812235,
+    "telefono": 922643453
+  },
+  {
+    "nombre": "Farmacia Cabrera Hilaszek",
+    "direccion": "El Pozo 9",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41365599,
+    "lng": -16.555744,
+    "telefono": 922380413
+  },
+  {
+    "nombre": "Farmacia Carrasco Juan",
+    "direccion": "Palo Blanco 17",
+    "municipio": "Los Realejos",
+    "lat": 28.366447,
+    "lng": -16.577677,
+    "telefono": 922343006
+  },
+  {
+    "nombre": "Farmacia Castello Gomez",
+    "direccion": "Los Menceyes 24",
+    "municipio": "Candelaria",
+    "lat": 28.37124299,
+    "lng": -16.363482,
+    "telefono": 922500531
+  },
+  {
+    "nombre": "Farmacia Castillo",
+    "direccion": "Castillo 9",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46688387,
+    "lng": -16.24993781,
+    "telefono": 922243241
+  },
+  {
+    "nombre": "Farmacia Castrillon Garcia-Delgado",
+    "direccion": "General TF 152 Norte 290",
+    "municipio": "La Laguna",
+    "lat": 28.49247857,
+    "lng": -16.36922381,
+    "telefono": 922636113
+  },
+  {
+    "nombre": "Farmacia Castro Aleman",
+    "direccion": "La Cañada TF 237 140",
+    "municipio": "La Laguna",
+    "lat": 28.47986199,
+    "lng": -16.363832,
+    "telefono": 922630941
+  },
+  {
+    "nombre": "Farmacia Cebrian Tejero",
+    "direccion": "Obispo Perez Caceres 67",
+    "municipio": "La Laguna",
+    "lat": 28.48034899,
+    "lng": -16.3104,
+    "telefono": 922257074
+  },
+  {
+    "nombre": "Farmacia Central",
+    "direccion": "Bentacayse 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.4255609,
+    "lng": -16.30128708,
+    "telefono": 922688747
+  },
+  {
+    "nombre": "Farmacia Coello de Leon",
+    "direccion": "Solis 8",
+    "municipio": "La Laguna",
+    "lat": 28.52035099,
+    "lng": -16.385223,
+    "telefono": 922541313
+  },
+  {
+    "nombre": "Farmacia Cohen Abejdid",
+    "direccion": "Garcilaso de la Vega 9",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46233899,
+    "lng": -16.258215,
+    "telefono": 922221434
+  },
+  {
+    "nombre": "Farmacia Comenge Acosta",
+    "direccion": "La Libertad 7",
+    "municipio": "Guía de Isora",
+    "lat": 28.23555399,
+    "lng": -16.79368,
+    "telefono": 922852377
+  },
+  {
+    "nombre": "Farmacia Comenge Acosta",
+    "direccion": "La Habana 2",
+    "municipio": "Arona",
+    "lat": 28.05164899,
+    "lng": -16.72146,
+    "telefono": 922790847
+  },
+  {
+    "nombre": "Farmacia Concepcion Yanes Perez",
+    "direccion": "Reina Sofia 17",
+    "municipio": "Guía de Isora",
+    "lat": 28.18213852,
+    "lng": -16.81542562,
+    "telefono": 922865440
+  },
+  {
+    "nombre": "Farmacia Corominas Roig",
+    "direccion": "Galceran 13",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46633647,
+    "lng": -16.25617547,
+    "telefono": 922271410
+  },
+  {
+    "nombre": "Farmacia Cruz Martin",
+    "direccion": "Fernando Salazar Gonzalez 24",
+    "municipio": "Arona",
+    "lat": 28.00880453,
+    "lng": -16.65375299,
+    "telefono": 922783003
+  },
+  {
+    "nombre": "Farmacia Curbelo Gil",
+    "direccion": "Santa Cruz 46",
+    "municipio": "Güimar",
+    "lat": 28.31811299,
+    "lng": -16.408274,
+    "telefono": 922511798
+  },
+  {
+    "nombre": "Farmacia de Los Angeles",
+    "direccion": "Las Breñas 25",
+    "municipio": "El Sauzal",
+    "lat": 28.46996499,
+    "lng": -16.44087,
+    "telefono": 922575008
+  },
+  {
+    "nombre": "Farmacia Delgado del Castillo",
+    "direccion": "General TF 82 Icod Guia de Isora 29",
+    "municipio": "Garachico",
+    "lat": 28.36338399,
+    "lng": -16.756098,
+    "telefono": 922133185
+  },
+  {
+    "nombre": "Farmacia Delgado Gonzalez",
+    "direccion": "Axaentemir 15",
+    "municipio": "Güimar",
+    "lat": 28.26378399,
+    "lng": -16.427202,
+    "telefono": 922520369
+  },
+  {
+    "nombre": "Farmacia Delgado Gonzalez",
+    "direccion": "General TF 82 Icod Guia de Isora 31",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36819599,
+    "lng": -16.730469,
+    "telefono": 922811879
+  },
+  {
+    "nombre": "Farmacia Diaz de Villegas",
+    "direccion": "Hierro 24",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46064399,
+    "lng": -16.276318,
+    "telefono": 922222267
+  },
+  {
+    "nombre": "Farmacia Diaz Falcon",
+    "direccion": "La Libertad 24",
+    "municipio": "San Juan de la Rambla",
+    "lat": 28.39386847,
+    "lng": -16.650434,
+    "telefono": 922350634
+  },
+  {
+    "nombre": "Farmacia Diaz Feria",
+    "direccion": "Fragata Danmark 8",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45861999,
+    "lng": -16.263292,
+    "telefono": 922229206
+  },
+  {
+    "nombre": "Farmacia Diaz Fernandez",
+    "direccion": "Jose Miguel Galvan Bello 34",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.04568299,
+    "lng": -16.537346,
+    "telefono": 922177213
+  },
+  {
+    "nombre": "Farmacia Diaz Gonzalez",
+    "direccion": "Santa Maria Soledad Torres Acosta 17",
+    "municipio": "La Laguna",
+    "lat": 28.46815499,
+    "lng": -16.292397,
+    "telefono": 922650572
+  },
+  {
+    "nombre": "Farmacia Diaz Guillen",
+    "direccion": "Nicaragua 2",
+    "municipio": "Güimar",
+    "lat": 28.32439656,
+    "lng": -16.4137147,
+    "telefono": 922512151
+  },
+  {
+    "nombre": "Farmacia Dominguez",
+    "direccion": "Los Menceyes 409",
+    "municipio": "La Laguna",
+    "lat": 28.46775699,
+    "lng": -16.284889,
+    "telefono": 922644057
+  },
+  {
+    "nombre": "Farmacia Dominguez Beautell",
+    "direccion": "Venezuela 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46524326,
+    "lng": -16.26998619,
+    "telefono": 922220071
+  },
+  {
+    "nombre": "Farmacia Dominguez Beautell",
+    "direccion": "Islas Canarias 134",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46517033,
+    "lng": -16.27002951,
+    "telefono": 922220071
+  },
+  {
+    "nombre": "Farmacia Dominguez Camara",
+    "direccion": "San Sebastian 3",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36709316,
+    "lng": -16.72028857,
+    "telefono": 922810782
+  },
+  {
+    "nombre": "Farmacia Dominguez del Toro",
+    "direccion": "Izquierdo Azcarate 20",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45905699,
+    "lng": -16.271669,
+    "telefono": 922221101
+  },
+  {
+    "nombre": "Farmacia Dominguez Vidal",
+    "direccion": "General TF 152 Norte 62",
+    "municipio": "Tacoronte",
+    "lat": 28.47680999,
+    "lng": -16.414989,
+    "telefono": 922560660
+  },
+  {
+    "nombre": "Farmacia Dominguez Viejo",
+    "direccion": "General TF 180 Santa Cruz La Laguna 409",
+    "municipio": "La Laguna",
+    "lat": 28.46775099,
+    "lng": -16.284933,
+    "telefono": 922644057
+  },
+  {
+    "nombre": "Farmacia Dominguez Vila",
+    "direccion": "Herreria 47",
+    "municipio": "Tacoronte",
+    "lat": 28.48850099,
+    "lng": -16.416916,
+    "telefono": 922571010
+  },
+  {
+    "nombre": "Farmacia Dorta Concepcion",
+    "direccion": "Padre Moore 4",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46436699,
+    "lng": -16.249432,
+    "telefono": 922241430
+  },
+  {
+    "nombre": "Farmacia Dorta Marrero",
+    "direccion": "General TF 28 Sur 63",
+    "municipio": "Arico",
+    "lat": 28.18201338,
+    "lng": -16.48012522,
+    "telefono": 922895003
+  },
+  {
+    "nombre": "Farmacia Dorta Rodriguez",
+    "direccion": "Antonio Garcia Perez 46",
+    "municipio": "Candelaria",
+    "lat": 28.37979099,
+    "lng": -16.372931,
+    "telefono": 922501403
+  },
+  {
+    "nombre": "Farmacia Dulce Maria Llanos",
+    "direccion": "Arriba 36",
+    "municipio": "Guía de Isora",
+    "lat": 28.21128356,
+    "lng": -16.77967827,
+    "telefono": 922850004
+  },
+  {
+    "nombre": "Farmacia Durana Vilas",
+    "direccion": "Jorge Manrique 2",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46149399,
+    "lng": -16.260736,
+    "telefono": 922226412
+  },
+  {
+    "nombre": "Farmacia Duro Garcia",
+    "direccion": "Santa Cruz 66",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.07989699,
+    "lng": -16.558954,
+    "telefono": 922392345
+  },
+  {
+    "nombre": "Farmacia El Muelle",
+    "direccion": "Rincon del Puerto 6",
+    "municipio": "Arona",
+    "lat": 28.05002427,
+    "lng": -16.7198607,
+    "telefono": 922794962
+  },
+  {
+    "nombre": "Farmacia El Pilar",
+    "direccion": "El Pilar 33",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47059823,
+    "lng": -16.25276694,
+    "telefono": 922240992
+  },
+  {
+    "nombre": "Farmacia El Puertito",
+    "direccion": "Cristobal Colon 31",
+    "municipio": "Güimar",
+    "lat": 28.2967444,
+    "lng": -16.37563707,
+    "telefono": 922528911
+  },
+  {
+    "nombre": "Farmacia El Ravelo",
+    "direccion": "San Cristobal 43",
+    "municipio": "El Sauzal",
+    "lat": 28.45808399,
+    "lng": -16.41852,
+    "telefono": 922585200
+  },
+  {
+    "nombre": "Farmacia El Toscal",
+    "direccion": "Toscal 10",
+    "municipio": "Los Realejos",
+    "lat": 28.40062868,
+    "lng": -16.57373811,
+    "telefono": 922362446
+  },
+  {
+    "nombre": "Farmacia Elorrieta Bilbao",
+    "direccion": "General TF 180 Santa Cruz La Laguna 24",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46454599,
+    "lng": -16.277475,
+    "telefono": 922645816
+  },
+  {
+    "nombre": "Farmacia Emma Maria Bencomo Leon",
+    "direccion": "Isora 66",
+    "municipio": "Guía de Isora",
+    "lat": 28.21266878,
+    "lng": -16.78191998,
+    "telefono": 922850131
+  },
+  {
+    "nombre": "Farmacia Espinosa Santana",
+    "direccion": "Princesa Guayarmina 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.4696664,
+    "lng": -16.26992546,
+    "telefono": 922232142
+  },
+  {
+    "nombre": "Farmacia Estevez Martinez",
+    "direccion": "Calvario 30",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.12098899,
+    "lng": -16.577585,
+    "telefono": 922770152
+  },
+  {
+    "nombre": "Farmacia Estrella",
+    "direccion": "Los Pescadores 17",
+    "municipio": "La Laguna",
+    "lat": 28.45301791,
+    "lng": -16.29733044,
+    "telefono": 0
+  },
+  {
+    "nombre": "Farmacia Estrella Gil",
+    "direccion": "San Casiano 6",
+    "municipio": "La Laguna",
+    "lat": 28.45331599,
+    "lng": -16.299261,
+    "telefono": 922584196
+  },
+  {
+    "nombre": "Farmacia Etayo Fernandez",
+    "direccion": "Valois 24",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41511018,
+    "lng": -16.54566888,
+    "telefono": 922380810
+  },
+  {
+    "nombre": "Farmacia Evora",
+    "direccion": "La Rosa 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.469565,
+    "lng": -16.25052669,
+    "telefono": 922282302
+  },
+  {
+    "nombre": "Farmacia Evora Centro",
+    "direccion": "Del Castillo 26",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46706056,
+    "lng": -16.25068667,
+    "telefono": 922283699
+  },
+  {
+    "nombre": "Farmacia Falcon Perez",
+    "direccion": "Marcelino Perdomo Reyes 21",
+    "municipio": "La Laguna",
+    "lat": 28.48493799,
+    "lng": -16.32501,
+    "telefono": 922255315
+  },
+  {
+    "nombre": "Farmacia Febles Acosta",
+    "direccion": "Aeropuerto Tenerife Norte Los Rodeos 1",
+    "municipio": "La Laguna",
+    "lat": 28.48745699,
+    "lng": -16.346025,
+    "telefono": 922635046
+  },
+  {
+    "nombre": "Farmacia Felipe Hormigo",
+    "direccion": "Cruz de Limera 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.56052199,
+    "lng": -16.217981,
+    "telefono": 922547102
+  },
+  {
+    "nombre": "Farmacia Felipe Rodriguez",
+    "direccion": "General TF 13 Punta Hidalgo 125",
+    "municipio": "La Laguna",
+    "lat": 28.55425779,
+    "lng": -16.34440524,
+    "telefono": 922540635
+  },
+  {
+    "nombre": "Farmacia Feria Hardisson",
+    "direccion": "Felipe Castillo 42",
+    "municipio": "La Laguna",
+    "lat": 28.53368599,
+    "lng": -16.365755,
+    "telefono": 922540115
+  },
+  {
+    "nombre": "Farmacia Feria Rodriguez",
+    "direccion": "Doctor Perez 15",
+    "municipio": "Santa Úrsula",
+    "lat": 28.42637799,
+    "lng": -16.48984,
+    "telefono": 922337145
+  },
+  {
+    "nombre": "Farmacia Fernandez Colina",
+    "direccion": "Santa Cruz 143",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.4757464,
+    "lng": -16.24948456,
+    "telefono": 922270379
+  },
+  {
+    "nombre": "Farmacia Fernandez Lopez",
+    "direccion": "Cardonal 12",
+    "municipio": "La Laguna",
+    "lat": 28.45081618,
+    "lng": -16.29951801,
+    "telefono": 922611183
+  },
+  {
+    "nombre": "Farmacia Fernandez Lopez",
+    "direccion": "Perez Diaz 54",
+    "municipio": "La Victoria",
+    "lat": 28.43483999,
+    "lng": -16.468922,
+    "telefono": 922580030
+  },
+  {
+    "nombre": "Farmacia Fernandez Perez",
+    "direccion": "General TF 111 Valle Tabares 150",
+    "municipio": "La Laguna",
+    "lat": 28.48202899,
+    "lng": -16.285728,
+    "telefono": 922643261
+  },
+  {
+    "nombre": "Farmacia Fernandez Rodriguez",
+    "direccion": "Tabares de Cala 70",
+    "municipio": "La Laguna",
+    "lat": 28.49215899,
+    "lng": -16.314083,
+    "telefono": 922252570
+  },
+  {
+    "nombre": "Farmacia Fernandez Vera",
+    "direccion": "Dominguez Alfonso 9",
+    "municipio": "La Orotava",
+    "lat": 28.3956786,
+    "lng": -16.51858322,
+    "telefono": 922330063
+  },
+  {
+    "nombre": "Farmacia Flores Galdo",
+    "direccion": "Franco Cupone 7",
+    "municipio": "El Rosario",
+    "lat": 28.40107199,
+    "lng": -16.321285,
+    "telefono": 922681148
+  },
+  {
+    "nombre": "Farmacia Flores Gonzalez",
+    "direccion": "España TF 217 122",
+    "municipio": "Santa Úrsula",
+    "lat": 28.42507599,
+    "lng": -16.482882,
+    "telefono": 922301795
+  },
+  {
+    "nombre": "Farmacia Florido Ledesma",
+    "direccion": "General TF 272 El Sobradillo 131",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.44249199,
+    "lng": -16.332561,
+    "telefono": 922622400
+  },
+  {
+    "nombre": "Farmacia Frances Garcia",
+    "direccion": "Doctor Olivera 12",
+    "municipio": "La Laguna",
+    "lat": 28.49010299,
+    "lng": -16.320882,
+    "telefono": 922259230
+  },
+  {
+    "nombre": "Farmacia Fuentes Guerra",
+    "direccion": "Inocencio Garcia 13",
+    "municipio": "La Orotava",
+    "lat": 28.39010199,
+    "lng": -16.525051,
+    "telefono": 922330094
+  },
+  {
+    "nombre": "Farmacia Galera Baudet",
+    "direccion": "General TF 342 La Orotava La Guancha 50",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.39638099,
+    "lng": -16.558058,
+    "telefono": 922384787
+  },
+  {
+    "nombre": "Farmacia Galvan Fernandez",
+    "direccion": "San Agustin 10",
+    "municipio": "La Orotava",
+    "lat": 28.39006886,
+    "lng": -16.52362433,
+    "telefono": 922335731
+  },
+  {
+    "nombre": "Farmacia Galvan Henriquez",
+    "direccion": "Chafira 20",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.44552399,
+    "lng": -16.289154,
+    "telefono": 922612915
+  },
+  {
+    "nombre": "Farmacia Galvan Navarro",
+    "direccion": "Muñoz Seca 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45867499,
+    "lng": -16.265522,
+    "telefono": 922220114
+  },
+  {
+    "nombre": "Farmacia Garcia Acosta",
+    "direccion": "General TF 28 El Rosario 28",
+    "municipio": "La Laguna",
+    "lat": 28.44653538,
+    "lng": -16.29776449,
+    "telefono": 922612583
+  },
+  {
+    "nombre": "Farmacia Garcia de Armas",
+    "direccion": "El Olivo 3",
+    "municipio": "Los Silos",
+    "lat": 28.36541355,
+    "lng": -16.81681791,
+    "telefono": 922840165
+  },
+  {
+    "nombre": "Farmacia Garcia Gallardo",
+    "direccion": "Sargento Provisional 21",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45236926,
+    "lng": -16.2871543,
+    "telefono": 671506653
+  },
+  {
+    "nombre": "Farmacia Garcia Gomez",
+    "direccion": "Araucarias 6",
+    "municipio": "La Orotava",
+    "lat": 28.39668699,
+    "lng": -16.514254,
+    "telefono": 922332100
+  },
+  {
+    "nombre": "Farmacia Garcia Melian",
+    "direccion": "Calvario 32",
+    "municipio": "La Orotava",
+    "lat": 28.39272273,
+    "lng": -16.52194868,
+    "telefono": 661703519
+  },
+  {
+    "nombre": "Farmacia Garcia Pedrajas",
+    "direccion": "Hermanos Fernandez Perdigon 5",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41290499,
+    "lng": -16.554169,
+    "telefono": 922381789
+  },
+  {
+    "nombre": "Farmacia Garcia Ramos",
+    "direccion": "Islas Canarias 125",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46411699,
+    "lng": -16.272367,
+    "telefono": 922226189
+  },
+  {
+    "nombre": "Farmacia Garcia Rodriguez",
+    "direccion": "General TF 16 Tacoronte Tejina 181",
+    "municipio": "Tacoronte",
+    "lat": 28.50092899,
+    "lng": -16.406687,
+    "telefono": 922563454
+  },
+  {
+    "nombre": "Farmacia Garcia Schwartz",
+    "direccion": "El Peñon 15",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41487043,
+    "lng": -16.55246,
+    "telefono": 922385620
+  },
+  {
+    "nombre": "Farmacia Gomez Delgado",
+    "direccion": "Charcay 11",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.11051199,
+    "lng": -16.594078,
+    "telefono": 922770827
+  },
+  {
+    "nombre": "Farmacia Gomez Diaz",
+    "direccion": "General TF 152 Norte 374",
+    "municipio": "Tacoronte",
+    "lat": 28.48647499,
+    "lng": -16.389833,
+    "telefono": 922561418
+  },
+  {
+    "nombre": "Farmacia Gomez Dominguez",
+    "direccion": "España TF 217 11",
+    "municipio": "Santa Úrsula",
+    "lat": 28.42555199,
+    "lng": -16.490868,
+    "telefono": 922300079
+  },
+  {
+    "nombre": "Farmacia Gomez Sierra",
+    "direccion": "San Jose 52",
+    "municipio": "Candelaria",
+    "lat": 28.39931499,
+    "lng": -16.356619,
+    "telefono": 922509614
+  },
+  {
+    "nombre": "Farmacia Gonzalez Alvarez",
+    "direccion": "Adeje 300 80",
+    "municipio": "Adeje",
+    "lat": 28.12239599,
+    "lng": -16.769003,
+    "telefono": 922740671
+  },
+  {
+    "nombre": "Farmacia Gonzalez Alvarez",
+    "direccion": "Agustin Millares 10",
+    "municipio": "Adeje",
+    "lat": 28.12820099,
+    "lng": -16.756105,
+    "telefono": 922740701
+  },
+  {
+    "nombre": "Farmacia Gonzalez Arqueros",
+    "direccion": "San Sebastian 70",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46379899,
+    "lng": -16.252947,
+    "telefono": 922213070
+  },
+  {
+    "nombre": "Farmacia Gonzalez Arroyo",
+    "direccion": "Pulido 81",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46756899,
+    "lng": -16.260651,
+    "telefono": 922270417
+  },
+  {
+    "nombre": "Farmacia Gonzalez Campoa",
+    "direccion": "San Sebastian de La Gomera 31",
+    "municipio": "Arona",
+    "lat": 28.01291999,
+    "lng": -16.667162,
+    "telefono": 922733423
+  },
+  {
+    "nombre": "Farmacia Gonzalez Clemente",
+    "direccion": "Grande 31",
+    "municipio": "Adeje",
+    "lat": 28.12147499,
+    "lng": -16.724749,
+    "telefono": 922710339
+  },
+  {
+    "nombre": "Farmacia Gonzalez de Chavez Quevedo",
+    "direccion": "Pulido 35",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46748399,
+    "lng": -16.258133,
+    "telefono": 922275719
+  },
+  {
+    "nombre": "Farmacia Gonzalez de Leon",
+    "direccion": "Trinidad 9",
+    "municipio": "La Laguna",
+    "lat": 28.48671699,
+    "lng": -16.31594,
+    "telefono": 922258531
+  },
+  {
+    "nombre": "Farmacia Gonzalez Etayo",
+    "direccion": "Mendez Nuñez 80",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47223499,
+    "lng": -16.251955,
+    "telefono": 922272405
+  },
+  {
+    "nombre": "Farmacia Gonzalez Luis",
+    "direccion": "Andromeda 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.48363899,
+    "lng": -16.245062,
+    "telefono": 922596634
+  },
+  {
+    "nombre": "Farmacia Gonzalez Martin",
+    "direccion": "Los Cercados 118",
+    "municipio": "La Victoria",
+    "lat": 28.43262299,
+    "lng": -16.461485,
+    "telefono": 922581652
+  },
+  {
+    "nombre": "Farmacia Gonzalez Medina",
+    "direccion": "Tabobo 24",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.44240048,
+    "lng": -16.31389822,
+    "telefono": 922610078
+  },
+  {
+    "nombre": "Farmacia Gonzalez Muñoz",
+    "direccion": "Tome Cano 10",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45837199,
+    "lng": -16.26198,
+    "telefono": 922222125
+  },
+  {
+    "nombre": "Farmacia Gonzalez Peña",
+    "direccion": "General TF 152 Norte 4",
+    "municipio": "Tacoronte",
+    "lat": 28.47552899,
+    "lng": -16.417608,
+    "telefono": 922560486
+  },
+  {
+    "nombre": "Farmacia Gonzalez Rodriguez",
+    "direccion": "Marques de Celada 71",
+    "municipio": "La Laguna",
+    "lat": 28.49032999,
+    "lng": -16.324278,
+    "telefono": 922258378
+  },
+  {
+    "nombre": "Farmacia Gonzalez Tejera",
+    "direccion": "Rincon del Puerto 6",
+    "municipio": "Arona",
+    "lat": 28.04986233,
+    "lng": -16.72023595,
+    "telefono": 922794962
+  },
+  {
+    "nombre": "Farmacia Gracia Pimienta",
+    "direccion": "Las Nieves 9",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.44321799,
+    "lng": -16.30377473,
+    "telefono": 922614559
+  },
+  {
+    "nombre": "Farmacia Guanche",
+    "direccion": "La Paz 2",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46794871,
+    "lng": -16.26109605,
+    "telefono": 922151704
+  },
+  {
+    "nombre": "Farmacia Guillermo Bonnet",
+    "direccion": "Quinto Centenario 1",
+    "municipio": "Adeje",
+    "lat": 28.06753498,
+    "lng": -16.72642099,
+    "telefono": 922107040
+  },
+  {
+    "nombre": "Farmacia Gutierrez Jimenez",
+    "direccion": "General TF 333 La Zamora 105",
+    "municipio": "Los Realejos",
+    "lat": 28.38607477,
+    "lng": -16.5675877,
+    "telefono": 922354449
+  },
+  {
+    "nombre": "Farmacia Gutierrez Monje",
+    "direccion": "8 de Agosto 18",
+    "municipio": "La Guancha",
+    "lat": 28.39044586,
+    "lng": -16.6719938,
+    "telefono": 922350634
+  },
+  {
+    "nombre": "Farmacia Halcon",
+    "direccion": "San Agustin 35",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36774611,
+    "lng": -16.71730846,
+    "telefono": 922815891
+  },
+  {
+    "nombre": "Farmacia Hernandez Cebrian",
+    "direccion": "General TF 152 Norte 94",
+    "municipio": "Tacoronte",
+    "lat": 28.47726399,
+    "lng": -16.413284,
+    "telefono": 922560059
+  },
+  {
+    "nombre": "Farmacia Hernandez Perez",
+    "direccion": "Drago 1",
+    "municipio": "Adeje",
+    "lat": 28.09480011,
+    "lng": -16.72932201,
+    "telefono": 922716585
+  },
+  {
+    "nombre": "Farmacia Hernandez Rodriguez",
+    "direccion": "San Martin de Porres 1",
+    "municipio": "Arona",
+    "lat": 28.07393009,
+    "lng": -16.67157428,
+    "telefono": 922720280
+  },
+  {
+    "nombre": "Farmacia Hernandez Sanchez",
+    "direccion": "San Francisco de Paula TF 265 142",
+    "municipio": "La Laguna",
+    "lat": 28.46613899,
+    "lng": -16.327385,
+    "telefono": 922256685
+  },
+  {
+    "nombre": "Farmacia Hernandez Trujillo",
+    "direccion": "Tinerfe El Grande 9",
+    "municipio": "Adeje",
+    "lat": 28.11947399,
+    "lng": -16.725842,
+    "telefono": 922780019
+  },
+  {
+    "nombre": "Farmacia Herrera Gonzalez",
+    "direccion": "Sardinera 34",
+    "municipio": "El Rosario",
+    "lat": 28.44698878,
+    "lng": -16.36788856,
+    "telefono": 922548602
+  },
+  {
+    "nombre": "Farmacia Hita Horcajada",
+    "direccion": "Santa Catalina 10",
+    "municipio": "Vilaflor",
+    "lat": 28.15469699,
+    "lng": -16.638268,
+    "telefono": 922709012
+  },
+  {
+    "nombre": "Farmacia Icod El Alto",
+    "direccion": "Icod El Alto (TF 342) 120",
+    "municipio": "Los Realejos",
+    "lat": 28.38366299,
+    "lng": -16.612404,
+    "telefono": 922359650
+  },
+  {
+    "nombre": "Farmacia Ivars Martinez",
+    "direccion": "Rafael Arocha Guillama 40",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46615399,
+    "lng": -16.274364,
+    "telefono": 922222904
+  },
+  {
+    "nombre": "Farmacia Janssen Kruse",
+    "direccion": "General TF 28 Sur 54",
+    "municipio": "Arona",
+    "lat": 28.07842247,
+    "lng": -16.68185062,
+    "telefono": 922721064
+  },
+  {
+    "nombre": "Farmacia Jerez Justicia",
+    "direccion": "Doctor Jose Naveiras 32",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47362299,
+    "lng": -16.253183,
+    "telefono": 922284444
+  },
+  {
+    "nombre": "Farmacia Jerez Ossorio",
+    "direccion": "6 de Diciembre 16",
+    "municipio": "La Laguna",
+    "lat": 28.48766099,
+    "lng": -16.319538,
+    "telefono": 922258300
+  },
+  {
+    "nombre": "Farmacia Juan Carlos de Ybarra Larrea",
+    "direccion": "General TF 217 Norte 206",
+    "municipio": "La Victoria",
+    "lat": 28.4288519,
+    "lng": -16.47772895,
+    "telefono": 922580957
+  },
+  {
+    "nombre": "Farmacia Kim Ahn",
+    "direccion": "San Juan Evangelista 47",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.49413699,
+    "lng": -16.226383,
+    "telefono": 922596756
+  },
+  {
+    "nombre": "Farmacia La Centinela",
+    "direccion": "Principes de España 42",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.37256969,
+    "lng": -16.71005656,
+    "telefono": 922812742
+  },
+  {
+    "nombre": "Farmacia La Cruz Santa",
+    "direccion": "Puldon Natero 32",
+    "municipio": "Los Realejos",
+    "lat": 28.37897312,
+    "lng": -16.56586945,
+    "telefono": 922894584
+  },
+  {
+    "nombre": "Farmacia La Marina",
+    "direccion": "Milicias de Garachico 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46820164,
+    "lng": -16.24802664,
+    "telefono": 922242493
+  },
+  {
+    "nombre": "Farmacia La Montaña",
+    "direccion": "General TF 333 La Montañeta 42",
+    "municipio": "Los Realejos",
+    "lat": 28.38880437,
+    "lng": -16.5609877,
+    "telefono": 922342218
+  },
+  {
+    "nombre": "Farmacia La Polvora",
+    "direccion": "General TF 217 Norte 38",
+    "municipio": "La Victoria",
+    "lat": 28.43636343,
+    "lng": -16.46570364,
+    "telefono": 922580657
+  },
+  {
+    "nombre": "Farmacia La Salud",
+    "direccion": "Venezuela 30",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46962578,
+    "lng": -16.27166614,
+    "telefono": 922220276
+  },
+  {
+    "nombre": "Farmacia La Salle",
+    "direccion": "Pedro de Mendoza 6",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46027976,
+    "lng": -16.25721203,
+    "telefono": 922220379
+  },
+  {
+    "nombre": "Farmacia La Zamora",
+    "direccion": "La Zamora 105",
+    "municipio": "Los Realejos",
+    "lat": 28.38610429,
+    "lng": -16.56742694,
+    "telefono": 922354449
+  },
+  {
+    "nombre": "Farmacia Labarta Carreño",
+    "direccion": "Los Playeros 38",
+    "municipio": "Arona",
+    "lat": 28.05165417,
+    "lng": -16.71792205,
+    "telefono": 922791706
+  },
+  {
+    "nombre": "Farmacia Lana Beaumont",
+    "direccion": "Ayuntamiento 5",
+    "municipio": "El Rosario",
+    "lat": 28.45115899,
+    "lng": -16.36664,
+    "telefono": 922548104
+  },
+  {
+    "nombre": "Farmacia Larriva Hernandez",
+    "direccion": "Los Hoyos Martinez Primera 11",
+    "municipio": "La Orotava",
+    "lat": 28.38182399,
+    "lng": -16.532991,
+    "telefono": 922331855
+  },
+  {
+    "nombre": "Farmacia Larruga Riera",
+    "direccion": "General TF 351 San Jose 38",
+    "municipio": "San Juan de la Rambla",
+    "lat": 28.37936599,
+    "lng": -16.645639,
+    "telefono": 922360062
+  },
+  {
+    "nombre": "Farmacia Las Delicias",
+    "direccion": "Pedro Doblado Claverie 7",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45249138,
+    "lng": -16.28402043,
+    "telefono": 922888947
+  },
+  {
+    "nombre": "Farmacia Las Indias",
+    "direccion": "Leopoldo de la Rosa Prolongacion 7",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46720898,
+    "lng": -16.2727985,
+    "telefono": 922227162
+  },
+  {
+    "nombre": "Farmacia Las Moraditas",
+    "direccion": "TF 5 Norte Enlace Moraditas 0",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.44618217,
+    "lng": -16.29076229,
+    "telefono": 922612915
+  },
+  {
+    "nombre": "Farmacia Lecuona Neumann",
+    "direccion": "Los Menceyes 54",
+    "municipio": "La Laguna",
+    "lat": 28.47688299,
+    "lng": -16.310246,
+    "telefono": 922252301
+  },
+  {
+    "nombre": "Farmacia Leon Leon",
+    "direccion": "Provincial TF 217 145",
+    "municipio": "Santa Úrsula",
+    "lat": 28.41924099,
+    "lng": -16.502634,
+    "telefono": 922300213
+  },
+  {
+    "nombre": "Farmacia Leyes Trujillo",
+    "direccion": "Alemania 1",
+    "municipio": "La Orotava",
+    "lat": 28.40190499,
+    "lng": -16.507526,
+    "telefono": 922324404
+  },
+  {
+    "nombre": "Farmacia Longuera Rodriguez Ibañez",
+    "direccion": "El Campo 4",
+    "municipio": "Los Realejos",
+    "lat": 28.39789506,
+    "lng": -16.57562576,
+    "telefono": 922363684
+  },
+  {
+    "nombre": "Farmacia Lopez Carrillo",
+    "direccion": "Rosalia de Castro 17",
+    "municipio": "San Miguel",
+    "lat": 28.03524199,
+    "lng": -16.637228,
+    "telefono": 922784514
+  },
+  {
+    "nombre": "Farmacia Lopez Toribio",
+    "direccion": "General TF 28 Sur 142",
+    "municipio": "San Miguel",
+    "lat": 28.09877199,
+    "lng": -16.61901008,
+    "telefono": 922700029
+  },
+  {
+    "nombre": "Farmacia Los Remedios",
+    "direccion": "Los Remedios 48",
+    "municipio": "Los Realejos",
+    "lat": 28.38046327,
+    "lng": -16.58333143,
+    "telefono": 922340357
+  },
+  {
+    "nombre": "Farmacia Luño Beese",
+    "direccion": "Reverendo Onesimo Bethencourt 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.48656299,
+    "lng": -16.23724,
+    "telefono": 922597722
+  },
+  {
+    "nombre": "Farmacia Llarena",
+    "direccion": "Flor de Pascua 4",
+    "municipio": "Santiago del Teide",
+    "lat": 28.24449174,
+    "lng": -16.84107042,
+    "telefono": 922861612
+  },
+  {
+    "nombre": "Farmacia Llarena Codesido",
+    "direccion": "Jose Gonzalez Fortes 3",
+    "municipio": "Santiago del Teide",
+    "lat": 28.24508099,
+    "lng": -16.841627,
+    "telefono": 922861612
+  },
+  {
+    "nombre": "Farmacia Machado",
+    "direccion": "Familia Bethencourt y Molina 21",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41659984,
+    "lng": -16.54456116,
+    "telefono": 922382003
+  },
+  {
+    "nombre": "Farmacia Maiques Chaves",
+    "direccion": "Guillermo Camacho Perez Galdos 25",
+    "municipio": "Los Realejos",
+    "lat": 28.38615599,
+    "lng": -16.588476,
+    "telefono": 922340217
+  },
+  {
+    "nombre": "Farmacia Manso Lopez",
+    "direccion": "El Jable 45",
+    "municipio": "Adeje",
+    "lat": 28.12916866,
+    "lng": -16.7820137,
+    "telefono": 922740534
+  },
+  {
+    "nombre": "Farmacia Maria Jesus Hernandez",
+    "direccion": "La Libertad 11",
+    "municipio": "La Laguna",
+    "lat": 28.45535905,
+    "lng": -16.2976706,
+    "telefono": 922820073
+  },
+  {
+    "nombre": "Farmacia Marquez Perez",
+    "direccion": "San Juan 5",
+    "municipio": "Los Silos",
+    "lat": 28.37469899,
+    "lng": -16.794226,
+    "telefono": 922841213
+  },
+  {
+    "nombre": "Farmacia Marrero Medel",
+    "direccion": "Moreiba 14",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.41731486,
+    "lng": -16.30556204,
+    "telefono": 822024110
+  },
+  {
+    "nombre": "Farmacia Marrero Rodriguez",
+    "direccion": "General TF 315 Las Dehesas 87",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.40344399,
+    "lng": -16.56407,
+    "telefono": 922381926
+  },
+  {
+    "nombre": "Farmacia Martin",
+    "direccion": "25 de abril 24",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36931462,
+    "lng": -16.71831024,
+    "telefono": 922810235
+  },
+  {
+    "nombre": "Farmacia Martin-Neda Buergo",
+    "direccion": "Veinticindo de Julio 10",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47098224,
+    "lng": -16.25562741,
+    "telefono": 922271505
+  },
+  {
+    "nombre": "Farmacia Martin Herrera",
+    "direccion": "General TF 657 Buzanada Aldea Blanca 24",
+    "municipio": "Arona",
+    "lat": 28.0694319,
+    "lng": -16.658218,
+    "telefono": 922722139
+  },
+  {
+    "nombre": "Farmacia Martin Izquierdo",
+    "direccion": "Veinticinco de Julio 37",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47332768,
+    "lng": -16.25566637,
+    "telefono": 922282122
+  },
+  {
+    "nombre": "Farmacia Martin Rodriguez",
+    "direccion": "Santa Cruz 13",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46865007,
+    "lng": -16.26087163,
+    "telefono": 922273428
+  },
+  {
+    "nombre": "Farmacia Martin Ruiz",
+    "direccion": "Tejar 7",
+    "municipio": "La Orotava",
+    "lat": 28.39380099,
+    "lng": -16.520802,
+    "telefono": 922330539
+  },
+  {
+    "nombre": "Farmacia Martin Zuil",
+    "direccion": "Blas Perez Gonzalez 4",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41012199,
+    "lng": -16.553349,
+    "telefono": 922384828
+  },
+  {
+    "nombre": "Farmacia Martinez Barona Herranz",
+    "direccion": "Canarias 10",
+    "municipio": "La Orotava",
+    "lat": 28.39185116,
+    "lng": -16.52203848,
+    "telefono": 922330229
+  },
+  {
+    "nombre": "Farmacia Martinez Rodriguez",
+    "direccion": "General Garcia Escamez 8",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45504999,
+    "lng": -16.272671,
+    "telefono": 922220417
+  },
+  {
+    "nombre": "Farmacia Martorell Medina",
+    "direccion": "Bruselas 20",
+    "municipio": "Adeje",
+    "lat": 28.08649051,
+    "lng": -16.73285079,
+    "telefono": 922717987
+  },
+  {
+    "nombre": "Farmacia Medal Paves",
+    "direccion": "San Juan 14",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41643299,
+    "lng": -16.549868,
+    "telefono": 922384287
+  },
+  {
+    "nombre": "Farmacia Mejias Lopez",
+    "direccion": "San Agustin 9",
+    "municipio": "La Laguna",
+    "lat": 28.48911299,
+    "lng": -16.314253,
+    "telefono": 922259711
+  },
+  {
+    "nombre": "Farmacia Melchor Perez",
+    "direccion": "Nivaria 1",
+    "municipio": "La Laguna",
+    "lat": 28.44601894,
+    "lng": -16.2999788,
+    "telefono": 922610196
+  },
+  {
+    "nombre": "Farmacia Mendez Alonso",
+    "direccion": "Milan 16",
+    "municipio": "La Laguna",
+    "lat": 28.53697399,
+    "lng": -16.360905,
+    "telefono": 922542553
+  },
+  {
+    "nombre": "Farmacia Mendez Barrera",
+    "direccion": "Los Menceyes 246",
+    "municipio": "La Laguna",
+    "lat": 28.46913699,
+    "lng": -16.292065,
+    "telefono": 922646717
+  },
+  {
+    "nombre": "Farmacia Merino Morillas",
+    "direccion": "Eugenio Dominguez Alfonso 2",
+    "municipio": "Adeje",
+    "lat": 28.07337999,
+    "lng": -16.731043,
+    "telefono": 922791021
+  },
+  {
+    "nombre": "Farmacia Mestres Izquierdo",
+    "direccion": "General TF 111 Los Campitos 34",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47171399,
+    "lng": -16.268852,
+    "telefono": 922272573
+  },
+  {
+    "nombre": "Farmacia Miranda",
+    "direccion": "El Puerto 16",
+    "municipio": "Buenavista del Norte",
+    "lat": 28.37112199,
+    "lng": -16.851297,
+    "telefono": 922127380
+  },
+  {
+    "nombre": "Farmacia Moderna",
+    "direccion": "Obispo Perez Caceres 10",
+    "municipio": "Güimar",
+    "lat": 28.31631283,
+    "lng": -16.40986315,
+    "telefono": 922510465
+  },
+  {
+    "nombre": "Farmacia Montesdeoca Valero",
+    "direccion": "Fuerteventura 78",
+    "municipio": "Arona",
+    "lat": 28.01151999,
+    "lng": -16.66859099,
+    "telefono": 922730609
+  },
+  {
+    "nombre": "Farmacia Moreno Diaz",
+    "direccion": "Duque 0",
+    "municipio": "Adeje",
+    "lat": 28.09101699,
+    "lng": -16.739571,
+    "telefono": 922715773
+  },
+  {
+    "nombre": "Farmacia Moreno Garcia",
+    "direccion": "Real 160",
+    "municipio": "La Matanza",
+    "lat": 28.45000599,
+    "lng": -16.452328,
+    "telefono": 922577198
+  },
+  {
+    "nombre": "Farmacia Moreno Regidor",
+    "direccion": "General TF 21 Cuesta de la Villa Granadilla 178",
+    "municipio": "La Orotava",
+    "lat": 28.37843499,
+    "lng": -16.511143,
+    "telefono": 922334483
+  },
+  {
+    "nombre": "Farmacia Moreno Torres",
+    "direccion": "Juan de Aguilar 4",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46894099,
+    "lng": -16.277065,
+    "telefono": 922661907
+  },
+  {
+    "nombre": "Farmacia Mota Dominguez",
+    "direccion": "Santiago Puig 2",
+    "municipio": "Arona",
+    "lat": 28.06188798,
+    "lng": -16.730343,
+    "telefono": 922794428
+  },
+  {
+    "nombre": "Farmacia Mota Dominguez",
+    "direccion": "Perez de Rozas 5",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46867199,
+    "lng": -16.256472,
+    "telefono": 922270553
+  },
+  {
+    "nombre": "Farmacia Mota Moraleda",
+    "direccion": "General TF 192 El Rosario 76",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45288299,
+    "lng": -16.275953,
+    "telefono": 922662626
+  },
+  {
+    "nombre": "Farmacia Munguia Lopez",
+    "direccion": "La Hornera 139",
+    "municipio": "La Laguna",
+    "lat": 28.46237199,
+    "lng": -16.303818,
+    "telefono": 922822016
+  },
+  {
+    "nombre": "Farmacia Munzenmaier Hernandez",
+    "direccion": "General TF 154 Portezuelo Las Toscas 134",
+    "municipio": "Tegueste",
+    "lat": 28.51718499,
+    "lng": -16.362585,
+    "telefono": 922545787
+  },
+  {
+    "nombre": "Farmacia Munzenmaier Hernandez",
+    "direccion": "San Agustin 63",
+    "municipio": "Los Realejos",
+    "lat": 28.388866,
+    "lng": -16.585567,
+    "telefono": 922340057
+  },
+  {
+    "nombre": "Farmacia Muñoz Muñoz",
+    "direccion": "Marques 38",
+    "municipio": "La Orotava",
+    "lat": 28.38535499,
+    "lng": -16.52458,
+    "telefono": 922330741
+  },
+  {
+    "nombre": "Farmacia Nasser Eddin",
+    "direccion": "Los Pueblos 14",
+    "municipio": "Adeje",
+    "lat": 28.07446099,
+    "lng": -16.730162,
+    "telefono": 922790787
+  },
+  {
+    "nombre": "Farmacia Negrin Mata",
+    "direccion": "General TF 217 Norte 152",
+    "municipio": "La Matanza",
+    "lat": 28.45148499,
+    "lng": -16.456713,
+    "telefono": 922577402
+  },
+  {
+    "nombre": "Farmacia Nuñez Perez",
+    "direccion": "Las Mantecas 84",
+    "municipio": "La Laguna",
+    "lat": 28.46040199,
+    "lng": -16.293205,
+    "telefono": 922662949
+  },
+  {
+    "nombre": "Farmacia Ofra",
+    "direccion": "Principes de España 3",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45585427,
+    "lng": -16.2810248,
+    "telefono": 922643750
+  },
+  {
+    "nombre": "Farmacia Olano y Lorenzo-Caceres",
+    "direccion": "Antonio Dominguez Alfonso 2",
+    "municipio": "Arona",
+    "lat": 28.05763199,
+    "lng": -16.73247699,
+    "telefono": 922751855
+  },
+  {
+    "nombre": "Farmacia Optica El Sauzal",
+    "direccion": "Inmaculada Concepcion 22",
+    "municipio": "El Sauzal",
+    "lat": 28.47973664,
+    "lng": -16.43521255,
+    "telefono": 922560874
+  },
+  {
+    "nombre": "Farmacia Ortega Diaz",
+    "direccion": "Maritima 13",
+    "municipio": "Candelaria",
+    "lat": 28.36057099,
+    "lng": -16.367409,
+    "telefono": 922502677
+  },
+  {
+    "nombre": "Farmacia Padilla Hernandez",
+    "direccion": "Cologan 14",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41524918,
+    "lng": -16.54843944,
+    "telefono": 922384414
+  },
+  {
+    "nombre": "Farmacia Pardillo Delgado",
+    "direccion": "Juan de Vera 2",
+    "municipio": "La Laguna",
+    "lat": 28.48940299,
+    "lng": -16.316545,
+    "telefono": 922259514
+  },
+  {
+    "nombre": "Farmacia Paredes Garcia",
+    "direccion": "San Matias 41",
+    "municipio": "La Laguna",
+    "lat": 28.43975999,
+    "lng": -16.29821,
+    "telefono": 922537887
+  },
+  {
+    "nombre": "Farmacia Peciña",
+    "direccion": "Maritima 29",
+    "municipio": "Candelaria",
+    "lat": 28.36614344,
+    "lng": -16.36415329,
+    "telefono": 922503691
+  },
+  {
+    "nombre": "Farmacia Pelaez Paramo",
+    "direccion": "Mendez Nuñez 53",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47389708,
+    "lng": -16.25070954,
+    "telefono": 922275814
+  },
+  {
+    "nombre": "Farmacia Perera Monje",
+    "direccion": "Obispo Perez Caceres 52",
+    "municipio": "Güimar",
+    "lat": 28.3134214,
+    "lng": -16.41112379,
+    "telefono": 922510209
+  },
+  {
+    "nombre": "Farmacia Perez-Godiño Cabrera",
+    "direccion": "Los Pueblos 29",
+    "municipio": "Adeje",
+    "lat": 28.07769399,
+    "lng": -16.732391,
+    "telefono": 922716309
+  },
+  {
+    "nombre": "Farmacia Perez-Trujillo Ruiz",
+    "direccion": "San Felipe 19",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41679799,
+    "lng": -16.552053,
+    "telefono": 922384264
+  },
+  {
+    "nombre": "Farmacia Perez Aranaz",
+    "direccion": "Las Americas 7",
+    "municipio": "Arona",
+    "lat": 28.05475903,
+    "lng": -16.72961937,
+    "telefono": 922750256
+  },
+  {
+    "nombre": "Farmacia Perez Batista",
+    "direccion": "Chirama 47",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.42657699,
+    "lng": -16.307081,
+    "telefono": 922618706
+  },
+  {
+    "nombre": "Farmacia Perez Luis",
+    "direccion": "Cordobes 85",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.39892799,
+    "lng": -16.554405,
+    "telefono": 922373192
+  },
+  {
+    "nombre": "Farmacia Perez Roca",
+    "direccion": "Los Playeros 38",
+    "municipio": "Arona",
+    "lat": 28.05164149,
+    "lng": -16.71793013,
+    "telefono": 922797764
+  },
+  {
+    "nombre": "Farmacia Perez Tamajon",
+    "direccion": "Venezuela 4",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41787099,
+    "lng": -16.543711,
+    "telefono": 922380406
+  },
+  {
+    "nombre": "Farmacia Perez Zarate",
+    "direccion": "Sor Soledad Cobian 13",
+    "municipio": "La Orotava",
+    "lat": 28.39189244,
+    "lng": -16.52045813,
+    "telefono": 922330238
+  },
+  {
+    "nombre": "Farmacia Pestano Garcia",
+    "direccion": "General TF 111 Los Campitos 86",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.48532699,
+    "lng": -16.261925,
+    "telefono": 922281323
+  },
+  {
+    "nombre": "Farmacia Pestano Molina",
+    "direccion": "San Juan 49",
+    "municipio": "La Laguna",
+    "lat": 28.48603299,
+    "lng": -16.317892,
+    "telefono": 922258716
+  },
+  {
+    "nombre": "Farmacia Pintor Diaz",
+    "direccion": "San Juan 3",
+    "municipio": "La Laguna",
+    "lat": 28.48832199,
+    "lng": -16.316925,
+    "telefono": 922255838
+  },
+  {
+    "nombre": "Farmacia Plasencia Garcia",
+    "direccion": "Abreu y Valdes 29",
+    "municipio": "La Laguna",
+    "lat": 28.4704132,
+    "lng": -16.28508226,
+    "telefono": 922640757
+  },
+  {
+    "nombre": "Farmacia Plaza del Charco",
+    "direccion": "Del Charco 8",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41600232,
+    "lng": -16.55075779,
+    "telefono": 922388967
+  },
+  {
+    "nombre": "Farmacia Polegre Hernandez",
+    "direccion": "General TF 263 San Miguel de Geneto 125",
+    "municipio": "La Laguna",
+    "lat": 28.46317699,
+    "lng": -16.316044,
+    "telefono": 922259506
+  },
+  {
+    "nombre": "Farmacia Prieto Arteaga",
+    "direccion": "La Iglesia 19",
+    "municipio": "Santiago del Teide",
+    "lat": 28.29577874,
+    "lng": -16.81535674,
+    "telefono": null
+  },
+  {
+    "nombre": "Farmacia Puelles Lemus",
+    "direccion": "El Carmen 20",
+    "municipio": "Tegueste",
+    "lat": 28.52365099,
+    "lng": -16.337608,
+    "telefono": 922541361
+  },
+  {
+    "nombre": "Farmacia Puente Zurita",
+    "direccion": "Islas Canarias 38",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.4681776,
+    "lng": -16.26425912,
+    "telefono": 922271263
+  },
+  {
+    "nombre": "Farmacia Quintana Plasencia",
+    "direccion": "Don Quijote 8",
+    "municipio": "La Laguna",
+    "lat": 28.44876099,
+    "lng": -16.305052,
+    "telefono": 922624090
+  },
+  {
+    "nombre": "Farmacia Rabadan Pous",
+    "direccion": "Real TF 237 77",
+    "municipio": "Tacoronte",
+    "lat": 28.46569999,
+    "lng": -16.405533,
+    "telefono": 922584386
+  },
+  {
+    "nombre": "Farmacia Recalde Astarloa",
+    "direccion": "General TF 28 Sur 74",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.43753199,
+    "lng": -16.306019,
+    "telefono": 922611922
+  },
+  {
+    "nombre": "Farmacia Reig Perdomo",
+    "direccion": "El Casino 37",
+    "municipio": "Tegueste",
+    "lat": 28.52258899,
+    "lng": -16.340586,
+    "telefono": 922541546
+  },
+  {
+    "nombre": "Farmacia Rios Gonzalez de Chaves",
+    "direccion": "Virgen de Begoña 44",
+    "municipio": "La Laguna",
+    "lat": 28.46550799,
+    "lng": -16.28298,
+    "telefono": 922645654
+  },
+  {
+    "nombre": "Farmacia Rivera Villalba",
+    "direccion": "Islas Canarias 92",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46622099,
+    "lng": -16.26683,
+    "telefono": 922206862
+  },
+  {
+    "nombre": "Farmacia Rodrigez Diaz",
+    "direccion": "Tomas de Armas Quintero 2",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.45014312,
+    "lng": -16.28513589,
+    "telefono": 922643911
+  },
+  {
+    "nombre": "Farmacia Rodriguez Baeza",
+    "direccion": "Maritima 175",
+    "municipio": "Candelaria",
+    "lat": 28.37999299,
+    "lng": -16.362345,
+    "telefono": 922506056
+  },
+  {
+    "nombre": "Farmacia Rodriguez Camara",
+    "direccion": "Principes de España 28",
+    "municipio": "El Tanque",
+    "lat": 28.35640099,
+    "lng": -16.779568,
+    "telefono": 922136383
+  },
+  {
+    "nombre": "Farmacia Rodriguez Casais",
+    "direccion": "San Pedro 1",
+    "municipio": "Güimar",
+    "lat": 28.31533799,
+    "lng": -16.410715,
+    "telefono": 922510211
+  },
+  {
+    "nombre": "Farmacia Rodriguez Casais",
+    "direccion": "Guanche 4",
+    "municipio": "La Orotava",
+    "lat": 28.38834799,
+    "lng": -16.508562,
+    "telefono": 922333777
+  },
+  {
+    "nombre": "Farmacia Rodriguez Casais",
+    "direccion": "Benitez de Lugo 7",
+    "municipio": "Arico",
+    "lat": 28.16705899,
+    "lng": -16.501905,
+    "telefono": 922768179
+  },
+  {
+    "nombre": "Farmacia Rodriguez de Vera",
+    "direccion": "Santa Cruz 139",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.07484399,
+    "lng": -16.557115,
+    "telefono": 922391432
+  },
+  {
+    "nombre": "Farmacia Rodriguez Diez",
+    "direccion": "Jose Victor Dominguez 16",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46144099,
+    "lng": -16.284479,
+    "telefono": 922643855
+  },
+  {
+    "nombre": "Farmacia Rodriguez Gonzalez",
+    "direccion": "General TF 324 La Perdoma 68",
+    "municipio": "La Orotava",
+    "lat": 28.37790299,
+    "lng": -16.550539,
+    "telefono": 922308906
+  },
+  {
+    "nombre": "Farmacia Rodriguez Hernandez",
+    "direccion": "Arriba 9",
+    "municipio": "La Laguna",
+    "lat": 28.5334603,
+    "lng": -16.36174556,
+    "telefono": 922540102
+  },
+  {
+    "nombre": "Farmacia Rodriguez Ibañez",
+    "direccion": "Heraclio Sanchez 44",
+    "municipio": "La Laguna",
+    "lat": 28.48416299,
+    "lng": -16.316473,
+    "telefono": 922253853
+  },
+  {
+    "nombre": "Farmacia Rodriguez Morales",
+    "direccion": "San Cristobal 31",
+    "municipio": "La Laguna",
+    "lat": 28.48461299,
+    "lng": -16.314209,
+    "telefono": 922258938
+  },
+  {
+    "nombre": "Farmacia Rodriguez Rodriguez",
+    "direccion": "Los Menceyes 280",
+    "municipio": "La Laguna",
+    "lat": 28.46890099,
+    "lng": -16.289991,
+    "telefono": 922642555
+  },
+  {
+    "nombre": "Farmacia Roman Botana",
+    "direccion": "Moises Alberto 2",
+    "municipio": "La Laguna",
+    "lat": 28.44840599,
+    "lng": -16.298288,
+    "telefono": 922611607
+  },
+  {
+    "nombre": "Farmacia Roman Elorrieta",
+    "direccion": "San Antonio 54",
+    "municipio": "La Laguna",
+    "lat": 28.48782197,
+    "lng": -16.32389179,
+    "telefono": 922250769
+  },
+  {
+    "nombre": "Farmacia Rosa Mendez",
+    "direccion": "Ramon y Cajal 41",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46623199,
+    "lng": -16.259319,
+    "telefono": 922289806
+  },
+  {
+    "nombre": "Farmacia Rufino Hernandez",
+    "direccion": "Real 12",
+    "municipio": "Arico",
+    "lat": 28.16347299,
+    "lng": -16.433365,
+    "telefono": 922706163
+  },
+  {
+    "nombre": "Farmacia Ruiz Martin",
+    "direccion": "General TF 366 El Amparo 77",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36224347,
+    "lng": -16.7146654,
+    "telefono": 922815642
+  },
+  {
+    "nombre": "Farmacia RV",
+    "direccion": "Obispo Perez Caceres 46",
+    "municipio": "Fasnia",
+    "lat": 28.23494389,
+    "lng": -16.43974039,
+    "telefono": 922530203
+  },
+  {
+    "nombre": "Farmacia Saavedra Castro",
+    "direccion": "Obispo Rey Redondo 48",
+    "municipio": "La Laguna",
+    "lat": 28.48933099,
+    "lng": -16.317766,
+    "telefono": 922259812
+  },
+  {
+    "nombre": "Farmacia Saavedra Perez",
+    "direccion": "Francisco La Roche 57",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47874099,
+    "lng": -16.24334,
+    "telefono": 922275563
+  },
+  {
+    "nombre": "Farmacia Saigi Dominguez",
+    "direccion": "General TF 152 Norte 232",
+    "municipio": "Tacoronte",
+    "lat": 28.47878099,
+    "lng": -16.403744,
+    "telefono": 922561715
+  },
+  {
+    "nombre": "Farmacia Salamanca",
+    "direccion": "Horacio Nelson 21",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47025963,
+    "lng": -16.26188143,
+    "telefono": 922271279
+  },
+  {
+    "nombre": "Farmacia Salazar Hernandez",
+    "direccion": "Juan Carlos I 38",
+    "municipio": "Arona",
+    "lat": 28.046983,
+    "lng": -16.70992987,
+    "telefono": 922787484
+  },
+  {
+    "nombre": "Farmacia San Andres",
+    "direccion": "Bartolome Belza 31",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.5049301,
+    "lng": -16.19266434,
+    "telefono": 922591117
+  },
+  {
+    "nombre": "Farmacia San Bartolome",
+    "direccion": "San Bartolome de Geneto 95",
+    "municipio": "La Laguna",
+    "lat": 28.46666099,
+    "lng": -16.310856,
+    "telefono": 922821242
+  },
+  {
+    "nombre": "Farmacia San Juan",
+    "direccion": "San Juan 95",
+    "municipio": "La Victoria",
+    "lat": 28.43080415,
+    "lng": -16.46823641,
+    "telefono": 922893791
+  },
+  {
+    "nombre": "Farmacia Sanchez-Gijon Gonzalez-Moro",
+    "direccion": "Los Chincanayros 37",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.37856899,
+    "lng": -16.695705,
+    "telefono": 922121804
+  },
+  {
+    "nombre": "Farmacia Sanchez Galdran",
+    "direccion": "General Machado Llano Blanco 2",
+    "municipio": "El Rosario",
+    "lat": 28.41006099,
+    "lng": -16.328224,
+    "telefono": 922681536
+  },
+  {
+    "nombre": "Farmacia Santa Cruz",
+    "direccion": "Viera y Clavijo 2",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46823589,
+    "lng": -16.25278373,
+    "telefono": 922283037
+  },
+  {
+    "nombre": "Farmacia Santana Pages",
+    "direccion": "Venezuela 49",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46963299,
+    "lng": -16.271847,
+    "telefono": 922220276
+  },
+  {
+    "nombre": "Farmacia Santana Perez",
+    "direccion": "Telefonica 3",
+    "municipio": "Adeje",
+    "lat": 28.12010799,
+    "lng": -16.732092,
+    "telefono": 922710698
+  },
+  {
+    "nombre": "Farmacia Santiago Apostol",
+    "direccion": "Los Remedios 22",
+    "municipio": "Los Realejos",
+    "lat": 28.37992802,
+    "lng": -16.58484762,
+    "telefono": 922340211
+  },
+  {
+    "nombre": "Farmacia Santos Lecuona",
+    "direccion": "Obispo Rey Redondo 56",
+    "municipio": "La Laguna",
+    "lat": 28.48944899,
+    "lng": -16.317974,
+    "telefono": 922259429
+  },
+  {
+    "nombre": "Farmacia Sanz Doblado",
+    "direccion": "La Rosa 58",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47285999,
+    "lng": -16.248484,
+    "telefono": 922275347
+  },
+  {
+    "nombre": "Farmacia Schwartz Calero",
+    "direccion": "Benito Perez Armas 10",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46092999,
+    "lng": -16.265596,
+    "telefono": 922229052
+  },
+  {
+    "nombre": "Farmacia Seco Pacio",
+    "direccion": "Hermano Pedro 2",
+    "municipio": "La Laguna",
+    "lat": 28.48123399,
+    "lng": -16.312386,
+    "telefono": 922258970
+  },
+  {
+    "nombre": "Farmacia Soledad Gonzalez",
+    "direccion": "Quinto Centenario 46",
+    "municipio": "Santiago del Teide",
+    "lat": 28.23871132,
+    "lng": -16.84178839,
+    "telefono": 922862717
+  },
+  {
+    "nombre": "Farmacia Sosa Hernandez",
+    "direccion": "Guanches 102",
+    "municipio": "Santa Úrsula",
+    "lat": 28.41467999,
+    "lng": -16.494083,
+    "telefono": 922300911
+  },
+  {
+    "nombre": "Farmacia Souto Bethencourt",
+    "direccion": "General TF 194 La Cuesta Taco 33",
+    "municipio": "La Laguna",
+    "lat": 28.46600699,
+    "lng": -16.287041,
+    "telefono": 922640377
+  },
+  {
+    "nombre": "Farmacia Suarez Estevez",
+    "direccion": "La Piedad 18",
+    "municipio": "La Orotava",
+    "lat": 28.38414799,
+    "lng": -16.522343,
+    "telefono": 922321006
+  },
+  {
+    "nombre": "Farmacia Suarez Gil",
+    "direccion": "Rafael Puig Lluvina 5",
+    "municipio": "Arona",
+    "lat": 28.06528699,
+    "lng": -16.731083,
+    "telefono": 922791072
+  },
+  {
+    "nombre": "Farmacia Suarez Perez",
+    "direccion": "La Rosa 33",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.47125999,
+    "lng": -16.249493,
+    "telefono": 922283459
+  },
+  {
+    "nombre": "Farmacia Suarez Yanes",
+    "direccion": "Calvario 3",
+    "municipio": "Los Silos",
+    "lat": 28.36579499,
+    "lng": -16.819262,
+    "telefono": 922840734
+  },
+  {
+    "nombre": "Farmacia T Cuida Melian",
+    "direccion": "Los Pescadores 35",
+    "municipio": "Guía de Isora",
+    "lat": 28.20201044,
+    "lng": -16.82777111,
+    "telefono": 922866217
+  },
+  {
+    "nombre": "Farmacia Teatro Guimera",
+    "direccion": "Angel Guimera 14",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46655262,
+    "lng": -16.25220822,
+    "telefono": 922241244
+  },
+  {
+    "nombre": "Farmacia Timon Hernandez-Abad",
+    "direccion": "Nicaragua 41",
+    "municipio": "Güimar",
+    "lat": 28.32422099,
+    "lng": -16.410248,
+    "telefono": 922511158
+  },
+  {
+    "nombre": "Farmacia Tomas Marti",
+    "direccion": "Marques Villanueva del Prado 11",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.41350899,
+    "lng": -16.538446,
+    "telefono": 922382222
+  },
+  {
+    "nombre": "Farmacia Toste Peraza",
+    "direccion": "Belgica 1",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46426599,
+    "lng": -16.26296,
+    "telefono": 922220056
+  },
+  {
+    "nombre": "Farmacia Triviño",
+    "direccion": "Isla de La Palma 4",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.43549926,
+    "lng": -16.31943921,
+    "telefono": 922537179
+  },
+  {
+    "nombre": "Farmacia Trujillo Benitez de Lugo",
+    "direccion": "Hipolito Sinforiano 24",
+    "municipio": "La Guancha",
+    "lat": 28.37480964,
+    "lng": -16.65230862,
+    "telefono": 922828027
+  },
+  {
+    "nombre": "Farmacia Trujillo Garcia",
+    "direccion": "Brocal 21",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.11442989,
+    "lng": -16.577323,
+    "telefono": 922771253
+  },
+  {
+    "nombre": "Farmacia Uranga y Arrieta",
+    "direccion": "Adelantado 8",
+    "municipio": "La Laguna",
+    "lat": 28.48788099,
+    "lng": -16.313128,
+    "telefono": 922257039
+  },
+  {
+    "nombre": "Farmacia Valladares Salmeron",
+    "direccion": "Las Palmeras 53",
+    "municipio": "La Laguna",
+    "lat": 28.47499799,
+    "lng": -16.298843,
+    "telefono": 922646816
+  },
+  {
+    "nombre": "Farmacia Velazquez Dorta",
+    "direccion": "Jose Hernandez Alfonso 47",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46064199,
+    "lng": -16.253426,
+    "telefono": 922236179
+  },
+  {
+    "nombre": "Farmacia Vidarte Chico",
+    "direccion": "La Constitucion 25",
+    "municipio": "Candelaria",
+    "lat": 28.35740465,
+    "lng": -16.36922711,
+    "telefono": 922506125
+  },
+  {
+    "nombre": "Farmacia Vigo Yunta",
+    "direccion": "Nuestra Señora del Carmen 5",
+    "municipio": "Granadilla de Abona",
+    "lat": 28.13469499,
+    "lng": -16.531082,
+    "telefono": 922777115
+  },
+  {
+    "nombre": "Farmacia Weyler",
+    "direccion": "Castillo 82",
+    "municipio": "Santa Cruz de Tenerife",
+    "lat": 28.46772848,
+    "lng": -16.25505335,
+    "telefono": 922271647
+  },
+  {
+    "nombre": "Farmacia Wildpret Fernandez",
+    "direccion": "Amilcar Gonzalez Diaz 2",
+    "municipio": "Arafo",
+    "lat": 28.34038399,
+    "lng": -16.418114,
+    "telefono": 922511722
+  },
+  {
+    "nombre": "Farmacia Yanes de Luque",
+    "direccion": "Real 290",
+    "municipio": "Tacoronte",
+    "lat": 28.46997599,
+    "lng": -16.385851,
+    "telefono": 922567262
+  },
+  {
+    "nombre": "Farmacia Zarate Gomez-Landero",
+    "direccion": "Key Muñoz 3",
+    "municipio": "Icod de los Vinos",
+    "lat": 28.36770999,
+    "lng": -16.718714,
+    "telefono": 699630017
+  },
+  {
+    "nombre": "Farmacia Zarate Pintado",
+    "direccion": "General TF 312 Puerto Cruz Las Arenas 72",
+    "municipio": "Puerto de la Cruz",
+    "lat": 28.40357799,
+    "lng": -16.549206,
+    "telefono": 922386854
+  },
+  {
+    "nombre": "Farmavitex (Parafarmacia y Herbolario)",
+    "direccion": "Los Pescadores 53",
+    "municipio": "Guía de Isora",
+    "lat": 28.20303721,
+    "lng": -16.82875226,
+    "telefono": 922868416
+  }
+]
