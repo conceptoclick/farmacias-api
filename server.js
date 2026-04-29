@@ -172,11 +172,17 @@ async function fetchGuardiasDeZonas(zoneIds) {
 
 // Función para obtener zonas relevantes basadas en ubicación (North/South/Metro)
 function getNearestZones(lat, lng) {
-    // Clasificación rápida por coordenadas aproximadas de Tenerife
-    // Norte: > 28.3, Metro: > -16.35, Sur: < 28.2
-    if (lat < 28.25) return [31, 32, 23, 21, 25, 27, 28, 29, 30]; // Sur (Arona, Adeje, San Miguel...)
-    if (lng > -16.35) return [33, 24, 1, 22, 13, 8]; // Metro (SC, Laguna, Rosario...)
-    return [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17]; // Norte
+    // Si no hay coordenadas, devolvemos las zonas clave (Metro + Sur + Norte)
+    if (!lat || !lng) return [33, 31, 32, 1, 11, 24];
+    
+    // Zonas del SUR (incluyendo 11: San Miguel-Granadilla)
+    if (lat < 28.25) return [11, 31, 32, 23, 21, 25, 27, 28, 29, 30]; 
+    
+    // Zonas METRO (SC, Laguna...)
+    if (lng > -16.35) return [33, 24, 1, 22, 13, 8]; 
+    
+    // Zonas NORTE
+    return [2, 3, 4, 5, 6, 7, 9, 10, 12, 14, 15, 16, 17]; 
 }
 
 // Función para refrescar el caché de guardias (Background Task)
@@ -236,7 +242,7 @@ setInterval(updateGuardiasCache, 60 * 60 * 1000);
 app.get('/api/guardia/cerca', async (req, res) => {
     const userLat = parseFloat(req.query.lat);
     const userLng = parseFloat(req.query.lng);
-    const radio = parseFloat(req.query.radio) || 15;
+    const radio = parseFloat(req.query.radio) || 10;
 
     if (isNaN(userLat) || isNaN(userLng)) {
         return res.status(400).json({ error: 'Faltan parámetros lat y lng válidos' });
