@@ -26,8 +26,18 @@ let cacheGuardias = [];
 let lastUpdate = null;
 let isRefreshing = false;
 
+// URLs de fuentes de guardias
+const GUARDIA_URLS = {
+    primaria: 'https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php',
+    secundaria: 'https://farmaciatenerife.com/farmacias-de-guardia/'
+};
+
 // Funciones de utilidad para Geolocalización
 function calculateDistance(lat1, lon1, lat2, lon2) {
+    // Validar coordenadas para evitar NaN
+    if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
+        return Infinity;
+    }
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLon = (lon2 - lon1) * Math.PI / 180;
@@ -94,15 +104,25 @@ async function geocodeAddress(address, municipio = "") {
         const query = encodeURIComponent(fullAddress);
         const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`;
         const response = await axios.get(url, { 
-            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.2 (conceptoclick)' },
+            headers: { 
+                'User-Agent': 'Mozilla/5.0 (compatible; FarmaciasTenerifeBot/1.3; +https://github.com/farmacias-tenerife)',
+                'Accept-Language': 'es-ES,es;q=0.9',
+                'Accept': 'application/json'
+            },
             timeout: 5000 
         });
         
         if (response.data && response.data.length > 0) {
-            const coords = {
-                lat: parseFloat(response.data[0].lat),
-                lng: parseFloat(response.data[0].lon)
-            };
+            const lat = parseFloat(response.data[0].lat);
+            const lon = parseFloat(response.data[0].lon);
+            
+            // Validar que las coordenadas sean números válidos
+            if (isNaN(lat) || isNaN(lon)) {
+                console.log(`⚠️ Coordenadas inválidas para "${fullAddress}"`);
+                return null;
+            }
+            
+            const coords = { lat, lng: lon };
             geocodeCache.set(fullAddress, coords);
             return coords;
         }
@@ -112,42 +132,85 @@ async function geocodeAddress(address, municipio = "") {
     return null;
 }
 
-// Función modular para scrapear una lista específica de zonas
+// Función modular para scrapear una lista específica de zonas (con rate limiting mejorado)
 async function fetchGuardiasDeZonas(zoneIds) {
-    const fetchPromises = zoneIds.map(z => 
-        axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
-            headers: { 'User-Agent': 'Mozilla/5.0' },
-            timeout: 8000 
-        }).catch(() => null)
-    );
+    console.log(`🔍 Iniciando scraping de ${zoneIds.length} zonas...`);
     
-    const responses = await Promise.all(fetchPromises);
     const results = [];
     const seen = new Set();
+    let totalRows = 0;
 
-    responses.forEach(resp => {
-        if (!resp || !resp.data) return;
-        const $ = cheerio.load(resp.data);
-        $('tr').each((i, el) => {
-            const cells = $(el).find('td');
-            if (cells.length >= 2) {
-                const n = $(cells[0]).text().trim();
-                if (n && n.length > 5 && !n.includes('NOMBRE')) {
-                    const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
-                    const norm = normalizeName(nombreLimpio);
-                    if (!seen.has(norm)) {
-                        seen.add(norm);
-                        results.push({ 
-                            nombre: nombreLimpio, 
-                            direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
-                            telefono: $(cells[2])?.text()?.trim() || "---",
-                            norm
-                        });
+    for (const z of zoneIds) {
+        try {
+            const response = await axios.get(`${GUARDIA_URLS.primaria}?q=${z}`, { 
+                headers: { 
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml',
+                    'Accept-Language': 'es-ES,es;q=0.9',
+                    'Referer': 'https://www.farmaciasdecanarias.com/'
+                },
+                timeout: 15000 
+            });
+            
+            console.log(`✅ Zona ${z}: ${response.status === 200 ? 'OK' : 'Error'}`);
+            
+            if (!response.data) continue;
+            
+            const $ = cheerio.load(response.data);
+            const rows = $('table.tg tr');
+            console.log(`📊 Zona ${z}: ${rows.length} filas encontradas`);
+            
+            rows.each((i, el) => {
+                const cells = $(el).find('td');
+                totalRows++;
+                
+                // Necesitamos al menos 4 celdas (nombre, dirección, teléfono, horario)
+                if (cells.length >= 4) {
+                    const nombreRaw = $(cells[0]).html()?.trim() || '';
+                    const nombreSinImg = nombreRaw.replace(/<img[^>]*>/gi, '').trim();
+                    
+                    if (nombreSinImg && nombreSinImg.length > 5 && !nombreSinImg.includes('NOMBRE')) {
+                        const nombreLimpio = nombreSinImg.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
+                        const norm = normalizeName(nombreLimpio);
+                        
+                        // Extraer coordenadas del enlace de Google Maps si existen
+                        let lat = null, lng = null;
+                        const mapCell = $(cells[4]).find('a');
+                        const mapLink = mapCell.attr('href') || '';
+                        const coordsMatch = mapLink.match(/q=([\d.-]+),([\d.-]+)/);
+                        if (coordsMatch) {
+                            lat = parseFloat(coordsMatch[1]);
+                            lng = parseFloat(coordsMatch[2]);
+                        }
+                        
+                        const farmaciaKey = `${norm}-${$(cells[1]).text().trim()}`;
+                        
+                        if (!seen.has(farmaciaKey)) {
+                            seen.add(farmaciaKey);
+                            results.push({
+                                nombre: nombreLimpio,
+                                direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
+                                telefono: $(cells[2])?.text()?.trim() || "---",
+                                horario: $(cells[3])?.text()?.trim() || "",
+                                lat,
+                                lng,
+                                norm,
+                                zonaId: z
+                            });
+                        }
                     }
                 }
-            }
-        });
-    });
+            });
+            
+            // Pequeño delay entre peticiones para evitar rate limiting
+            await new Promise(resolve => setTimeout(resolve, 200));
+            
+        } catch (err) {
+            console.log(`❌ Zona ${z}: ${err.message}`);
+        }
+    }
+    
+    console.log(`📋 Scraping completado: ${totalRows} filas procesadas, ${results.length} farmacias únicas encontradas`);
     return results;
 }
 
@@ -204,8 +267,10 @@ async function updateGuardiasCache() {
     }
 }
 
-// Refrescar cada 60 minutos
-setInterval(updateGuardiasCache, 60 * 60 * 1000);
+// Refrescar cada 60 minutos (con delay inicial para evitar picos)
+setTimeout(() => {
+    setInterval(updateGuardiasCache, 60 * 60 * 1000);
+}, Math.random() * 300000); // Delay aleatorio de 0-5 min al inicio
 
 // --- ENDPOINT: GUARDIAS CERCANAS (Optimizado con Fallback Live) ---
 app.get('/api/guardia/cerca', async (req, res) => {
@@ -213,8 +278,13 @@ app.get('/api/guardia/cerca', async (req, res) => {
     const userLng = parseFloat(req.query.lng);
     const radio = parseFloat(req.query.radio) || 15;
 
-    if (isNaN(userLat) || isNaN(userLng)) {
-        return res.status(400).json({ error: 'Faltan parámetros lat y lng válidos' });
+    // Validación estricta de coordenadas para Tenerife
+    if (isNaN(userLat) || isNaN(userLng) || 
+        userLat < 27.5 || userLat > 29 || 
+        userLng < -17 || userLng > -15.5) {
+        return res.status(400).json({ 
+            error: 'Coordenadas inválidas. lat y lng deben estar en el rango de Tenerife (27.5-29, -17 a -15.5)' 
+        });
     }
 
     let searchData = cacheGuardias;
@@ -243,7 +313,7 @@ app.get('/api/guardia/cerca', async (req, res) => {
             const dist = calculateDistance(userLat, userLng, f.lat, f.lng);
             return { ...f, distanciaKm: Math.round(dist * 100) / 100 };
         })
-        .filter(f => f.distanciaKm <= radio)
+        .filter(f => isFinite(f.distanciaKm) && f.distanciaKm <= radio)
         .sort((a, b) => a.distanciaKm - b.distanciaKm);
 
     res.json({ 
@@ -251,6 +321,7 @@ app.get('/api/guardia/cerca', async (req, res) => {
         isFallback: cacheGuardias.length === 0,
         total: results.length, 
         lastUpdate,
+        filtros: { lat: userLat, lng: userLng, radioKm: radio },
         farmacias: results
     });
 });
