@@ -43,6 +43,7 @@ function normalizeName(name) {
     if (!name) return "";
     return name.toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/^\d+h/i, '') // Quita "24h" al principio
         .replace(/lcda\.|lcdo\.|farmacia|titular|d\.|da\./gi, '')
         .replace(/[^a-z0-9]/gi, '')
         .trim();
@@ -101,14 +102,17 @@ app.get('/api/status', (req, res) => res.json({
 const geocodeCache = new Map();
 
 async function geocodeAddress(address, municipio = "") {
-    const fullAddress = `${address}${municipio ? ', ' + municipio : ''}, Tenerife, Canarias, España`;
+    // Limpiamos la dirección para Nominatim (quitamos local 3, pta 2, etc si ensucian mucho)
+    const cleanAddress = address.split(',')[0].trim();
+    const fullAddress = `${cleanAddress}${municipio ? ', ' + municipio : ''}, Tenerife, Canarias, España`;
+    
     if (geocodeCache.has(fullAddress)) return geocodeCache.get(fullAddress);
     
     try {
         const query = encodeURIComponent(fullAddress);
         const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`;
         const response = await axios.get(url, { 
-            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.2 (conceptoclick)' },
+            headers: { 'User-Agent': 'FarmaciasTenerifeAPI/1.3 (conceptoclick)' },
             timeout: 5000 
         });
         
@@ -146,7 +150,8 @@ async function fetchGuardiasDeZonas(zoneIds) {
             const cells = $(el).find('td');
             if (cells.length >= 2) {
                 const n = $(cells[0]).text().trim();
-                if (n && n.length > 5 && !n.includes('NOMBRE')) {
+                // Filtro más flexible para capturar todas las guardias
+                if (n && n.length > 3 && !n.includes('NOMBRE')) {
                     const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
                     const norm = normalizeName(nombreLimpio);
                     if (!seen.has(norm)) {
@@ -199,11 +204,17 @@ async function updateGuardiasCache() {
             if (match) {
                 processedList.push({ ...info, lat: match.lat, lng: match.lng, municipio: match.municipio });
             } else {
-                // Geocodificación inteligente en el refresco completo
-                await new Promise(r => setTimeout(r, 1000)); // Respetar rate limits
-                const coords = await geocodeAddress(info.direccion);
+                // Si no está en la DB, intentamos geolocalizar con el municipio extraído de la dirección
+                const muniMatch = info.direccion.match(/\(([^)]+)\)/); // Busca texto entre paréntesis
+                const municipioExtraido = muniMatch ? muniMatch[1] : "";
+                
+                await new Promise(r => setTimeout(r, 1000));
+                const coords = await geocodeAddress(info.direccion, municipioExtraido);
                 if (coords) {
-                    processedList.push({ ...info, lat: coords.lat, lng: coords.lng, municipio: "Localizada por GPS" });
+                    processedList.push({ ...info, lat: coords.lat, lng: coords.lng, municipio: municipioExtraido || "Tenerife" });
+                } else {
+                    // Fallback final: meterla sin coords para que al menos salga en lista
+                    processedList.push({ ...info, lat: null, lng: null, municipio: municipioExtraido || "Tenerife" });
                 }
             }
         }
@@ -283,9 +294,14 @@ app.get('/api/farmacia-random', (req, res) => {
     res.json({ success: true, farmacia: random });
 });
 
+// MEJORA: Búsqueda por municipio o barrio (busca en ambos campos)
 app.get('/api/farmacias/municipio/:m', (req, res) => {
-    const m = req.params.m.toLowerCase();
-    const f = datos.filter(x => x.municipio?.toLowerCase().includes(m));
+    const m = req.params.m.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const f = datos.filter(x => {
+        const muni = (x.municipio || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const dir = (x.direccion || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return muni.includes(m) || dir.includes(m);
+    });
     res.json({ success: true, farmacias: f });
 });
 
