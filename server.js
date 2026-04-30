@@ -300,15 +300,45 @@ app.get('/api/farmacia-random', (req, res) => {
     res.json({ success: true, farmacia: random });
 });
 
-// MEJORA: Búsqueda por municipio o barrio (busca en ambos campos)
+// MEJORA: Buscador Universal (Base Maestra + Guardias en Vivo)
 app.get('/api/farmacias/municipio/:m', (req, res) => {
-    const m = req.params.m.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const f = datos.filter(x => {
+    const query = req.params.m.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+    // Combinamos todos los datos conocidos (Maestra + lo que hay en Cache de Guardias)
+    const allKnown = [...datos];
+    
+    // Añadimos las de guardia que no estén en la maestra
+    cacheGuardias.forEach(g => {
+        const exists = allKnown.some(d => normalizeName(d.nombre) === g.norm);
+        if (!exists) allKnown.push(g);
+    });
+
+    const results = allKnown.filter(x => {
         const muni = (x.municipio || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const dir = (x.direccion || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        return muni.includes(m) || dir.includes(m);
+        const nom = (x.nombre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        
+        // Si busca "Granadilla", incluimos Médano y San Isidro por asociación lógica
+        if (query === "granadilla") {
+            if (dir.includes("medano") || dir.includes("isidro") || muni.includes("granadilla")) return true;
+        }
+        
+        return muni.includes(query) || dir.includes(query) || nom.includes(query);
+    }).map(f => {
+        // Marcamos cuáles están de guardia para el frontend
+        const esGuardia = cacheGuardias.some(g => g.norm === normalizeName(f.nombre));
+        return { ...f, esGuardia };
     });
-    res.json({ success: true, farmacias: f });
+
+    // Ordenar: primero las de guardia, luego por nombre
+    results.sort((a, b) => (b.esGuardia - a.esGuardia) || a.nombre.localeCompare(b.nombre));
+
+    res.json({ 
+        success: true, 
+        total: results.length,
+        query: req.params.m,
+        farmacias: results 
+    });
 });
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
