@@ -311,7 +311,7 @@ app.get('/api/guardia/cerca', async (req, res) => {
 
     const results = searchData
         .map(f => {
-            if (!f.lat || !f.lng) return { ...f, distanciaKm: 0.1, note: "Ubicación aproximada" };
+            if (!f.lat || !f.lng) return { ...f, distanciaKm: 999 };
             const dist = calculateDistance(userLat, userLng, f.lat, f.lng);
             return { ...f, distanciaKm: Math.round(dist * 100) / 100 };
         })
@@ -359,20 +359,29 @@ app.get('/api/farmacias/municipio/:m', (req, res) => {
         const dir = (x.direccion || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const nom = (x.nombre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         
-        // Si busca "Granadilla", incluimos Médano y San Isidro por asociación lógica
-        if (query === "granadilla") {
-            if (dir.includes("medano") || dir.includes("isidro") || muni.includes("granadilla")) return true;
-        }
-        
-        return muni.includes(query) || dir.includes(query) || nom.includes(query);
+        // Si el usuario escribió todo junto (sanmiguel), lo normalizamos para la búsqueda
+        const cleanNom = nom.replace(/\s+/g, '');
+        const cleanMuni = muni.replace(/\s+/g, '');
+        const cleanQuery = query.replace(/\s+/g, '');
+
+        return muni.includes(query) || dir.includes(query) || nom.includes(query) || cleanMuni.includes(cleanQuery) || cleanNom.includes(cleanQuery);
     }).map(f => {
-        // Marcamos cuáles están de guardia para el frontend
-        const esGuardia = cacheGuardias.some(g => g.norm === normalizeName(f.nombre));
-        return { ...f, esGuardia };
+        // Buscamos info extra en el cache de guardias (horarios, is24h)
+        const gInfo = cacheGuardias.find(g => g.norm === normalizeName(f.nombre));
+        return { 
+            ...f, 
+            esGuardia: !!gInfo, 
+            horario: gInfo ? gInfo.horario : f.horario,
+            is24h: gInfo ? gInfo.is24h : false
+        };
     });
 
-    // Ordenar: primero las de guardia, luego por nombre
-    results.sort((a, b) => (b.esGuardia - a.esGuardia) || a.nombre.localeCompare(b.nombre));
+    // Ordenar: primero las 24H, luego de guardia, luego el resto
+    results.sort((a, b) => {
+        if (a.is24h !== b.is24h) return b.is24h ? 1 : -1;
+        if (a.esGuardia !== b.esGuardia) return b.esGuardia ? 1 : -1;
+        return a.nombre.localeCompare(b.nombre);
+    });
 
     res.json({ 
         success: true, 
