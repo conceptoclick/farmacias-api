@@ -378,8 +378,10 @@ app.get('/api/farmacias/municipio/:m', (req, res) => {
 
     // Ordenar: primero las 24H, luego de guardia, luego el resto
     results.sort((a, b) => {
-        if (a.is24h !== b.is24h) return b.is24h ? 1 : -1;
-        if (a.esGuardia !== b.esGuardia) return b.esGuardia ? 1 : -1;
+        if (a.is24h && !b.is24h) return -1;
+        if (!a.is24h && b.is24h) return 1;
+        if (a.esGuardia && !b.esGuardia) return -1;
+        if (!a.esGuardia && b.esGuardia) return 1;
         return a.nombre.localeCompare(b.nombre);
     });
 
