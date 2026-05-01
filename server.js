@@ -130,48 +130,73 @@ async function geocodeAddress(address, municipio = "") {
     return null;
 }
 
+const HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Language': 'es-ES,es;q=0.9',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache'
+};
+
 // Función modular para scrapear una lista específica de zonas
 async function fetchGuardiasDeZonas(zoneIds) {
-    const fetchPromises = zoneIds.map(z => 
-        axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
-            headers: { 'User-Agent': 'Mozilla/5.0' },
-            timeout: 10000 
-        }).catch(() => null)
-    );
-    
-    const responses = await Promise.all(fetchPromises);
     const results = [];
     const seen = new Set();
+    
+    // Procesamos de 5 en 5 para no saturar y evitar bloqueos
+    for (let i = 0; i < zoneIds.length; i += 5) {
+        const chunk = zoneIds.slice(i, i + 5);
+        const fetchPromises = chunk.map(z => 
+            axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
+                headers: HEADERS,
+                timeout: 12000 
+            }).catch(err => {
+                console.log(`⚠️ Error en zona ${z}: ${err.message}`);
+                return null;
+            })
+        );
+        
+        const responses = await Promise.all(fetchPromises);
 
-    responses.forEach(resp => {
-        if (!resp || !resp.data) return;
-        const $ = cheerio.load(resp.data);
-        $('tr').each((i, el) => {
-            const cells = $(el).find('td');
-            if (cells.length >= 4) { // Ahora pedimos al menos 4 celdas para incluir horario
-                const n = $(cells[0]).text().trim();
-                if (n && n.length > 3 && !n.includes('NOMBRE')) {
-                    const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
-                    const norm = normalizeName(nombreLimpio);
+        responses.forEach((resp, index) => {
+            if (!resp || !resp.data) return;
+            const $ = cheerio.load(resp.data);
+            const rows = $('tr');
+            
+            rows.each((j, el) => {
+                const cells = $(el).find('td');
+                if (cells.length >= 3) { // Más flexible: al menos nombre, dirección y tlf
+                    const cell0 = $(cells[0]);
+                    const n = cell0.text().trim();
                     
-                    const horarioRaw = $(cells[3]).text().trim();
-                    const is24h = horarioRaw.toLowerCase().includes('24 horas') || n.toLowerCase().startsWith('24h');
+                    if (n && n.length > 3 && !n.includes('NOMBRE')) {
+                        const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
+                        const norm = normalizeName(nombreLimpio);
+                        
+                        // Si no hay columna 4, el horario es "Desconocido"
+                        const horarioRaw = cells.length >= 4 ? $(cells[3]).text().trim() : "Consultar";
+                        const is24h = horarioRaw.toLowerCase().includes('24 horas') || 
+                                     n.toLowerCase().includes('24h') || 
+                                     cell0.find('img[alt*="24h"]').length > 0;
 
-                    if (!seen.has(norm)) {
-                        seen.add(norm);
-                        results.push({ 
-                            nombre: nombreLimpio.replace(/^24h/i, '').trim(), 
-                            direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
-                            telefono: $(cells[2])?.text()?.trim()?.replace(/\s+/g, '') || "",
-                            horario: horarioRaw,
-                            is24h,
-                            norm
-                        });
+                        if (!seen.has(norm)) {
+                            seen.add(norm);
+                            results.push({ 
+                                nombre: nombreLimpio.replace(/^24h/i, '').trim(), 
+                                direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
+                                telefono: $(cells[2])?.text()?.trim()?.replace(/\s+/g, '') || "",
+                                horario: horarioRaw,
+                                is24h,
+                                norm
+                            });
+                        }
                     }
                 }
-            }
+            });
         });
-    });
+        // Pequeña pausa entre bloques para ser "educados" con el servidor
+        if (i + 5 < zoneIds.length) await new Promise(r => setTimeout(r, 500));
+    }
     return results;
 }
 
