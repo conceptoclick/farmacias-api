@@ -296,8 +296,10 @@ app.get('/api/guardia/cerca', async (req, res) => {
                 return dNorm === info.norm || dNorm.includes(info.norm) || info.norm.includes(dNorm);
             });
             if (match) return { ...info, lat: match.lat, lng: match.lng, municipio: match.municipio };
-            return null;
-        }).filter(Boolean);
+            
+            // Si no hay match, la devolvemos igual (sin lat/lng de momento) para no perderla
+            return { ...info, lat: null, lng: null, municipio: "Tenerife (Cargando...)" };
+        });
 
         // Disparar el refresco completo de la isla en segundo plano (sin await)
         updateGuardiasCache();
@@ -305,6 +307,7 @@ app.get('/api/guardia/cerca', async (req, res) => {
 
     const results = searchData
         .map(f => {
+            if (!f.lat || !f.lng) return { ...f, distanciaKm: 0.1, note: "Ubicación aproximada" };
             const dist = calculateDistance(userLat, userLng, f.lat, f.lng);
             return { ...f, distanciaKm: Math.round(dist * 100) / 100 };
         })
