@@ -151,11 +151,23 @@ function updateMap(data) {
             const lng = f.longitud || (f.coordenadas && f.coordenadas.lng) || f.lng;
             if (lat && lng) {
                 const marker = L.marker([lat, lng]).bindPopup(`
-                    <div style="color: black">
-                        <strong>${f.nombre}</strong><br>
-                        ${f.direccion || f.direccion_nombre_via || ''}<br>
-                        ${f.distanciaKm ? `<b>Distancia:</b> ${f.distanciaKm} km<br>` : ''}
-                        <small>${f.telefono || ''}</small>
+                    <div style="color: black; min-width: 150px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px;">
+                            <strong style="font-size: 14px;">${f.nombre}</strong>
+                            ${f.is24h ? '<span style="background: #ef4444; color: white; padding: 2px 5px; border-radius: 4px; font-size: 10px; font-weight: bold;">24H</span>' : ''}
+                        </div>
+                        <div style="font-size: 12px; margin-bottom: 5px; color: #4b5563;">
+                            <i class="fas fa-map-marker-alt"></i> ${f.direccion || ''}
+                        </div>
+                        <div style="font-size: 12px; color: #059669; font-weight: bold; margin-bottom: 8px;">
+                            <i class="far fa-clock"></i> ${f.horario || 'Horario no disp.'}
+                        </div>
+                        ${f.distanciaKm ? `<div style="font-size: 11px; color: #6b7280; border-top: 1px solid #eee; pt-2;"><b>Distancia:</b> ${f.distanciaKm} km</div>` : ''}
+                        <div style="margin-top: 10px; display: flex; gap: 5px;">
+                            <a href="tel:${f.telefono}" style="flex: 1; background: var(--primary); color: white; text-align: center; padding: 5px; border-radius: 4px; text-decoration: none; font-size: 12px;">
+                                <i class="fas fa-phone"></i> Llamar
+                            </a>
+                        </div>
                     </div>
                 `);
                 markerLayer.addLayer(marker);

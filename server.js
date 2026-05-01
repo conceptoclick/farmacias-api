@@ -135,7 +135,7 @@ async function fetchGuardiasDeZonas(zoneIds) {
     const fetchPromises = zoneIds.map(z => 
         axios.get(`https://www.farmaciasdecanarias.com/FAR/scripts/getFarmacias.php?q=${z}`, { 
             headers: { 'User-Agent': 'Mozilla/5.0' },
-            timeout: 8000 
+            timeout: 10000 
         }).catch(() => null)
     );
     
@@ -148,18 +148,23 @@ async function fetchGuardiasDeZonas(zoneIds) {
         const $ = cheerio.load(resp.data);
         $('tr').each((i, el) => {
             const cells = $(el).find('td');
-            if (cells.length >= 2) {
+            if (cells.length >= 4) { // Ahora pedimos al menos 4 celdas para incluir horario
                 const n = $(cells[0]).text().trim();
-                // Filtro más flexible para capturar todas las guardias
                 if (n && n.length > 3 && !n.includes('NOMBRE')) {
                     const nombreLimpio = n.replace(/\t|\n/g, ' ').replace(/\s+/g, ' ').trim();
                     const norm = normalizeName(nombreLimpio);
+                    
+                    const horarioRaw = $(cells[3]).text().trim();
+                    const is24h = horarioRaw.toLowerCase().includes('24 horas') || n.toLowerCase().startsWith('24h');
+
                     if (!seen.has(norm)) {
                         seen.add(norm);
                         results.push({ 
-                            nombre: nombreLimpio, 
+                            nombre: nombreLimpio.replace(/^24h/i, '').trim(), 
                             direccion: $(cells[1]).text().trim().replace(/\s+/g, ' '),
-                            telefono: $(cells[2])?.text()?.trim() || "---",
+                            telefono: $(cells[2])?.text()?.trim()?.replace(/\s+/g, '') || "",
+                            horario: horarioRaw,
+                            is24h,
                             norm
                         });
                     }
@@ -210,16 +215,20 @@ async function updateGuardiasCache() {
             if (match) {
                 processedList.push({ ...info, lat: match.lat, lng: match.lng, municipio: match.municipio });
             } else {
-                // Si no está en la DB, intentamos geolocalizar con el municipio extraído de la dirección
-                const muniMatch = info.direccion.match(/\(([^)]+)\)/); // Busca texto entre paréntesis
+                // Si no está en la DB, intentamos geolocalizar
+                const muniMatch = info.direccion.match(/\(([^)]+)\)/);
                 const municipioExtraido = muniMatch ? muniMatch[1] : "";
                 
                 await new Promise(r => setTimeout(r, 1000));
                 const coords = await geocodeAddress(info.direccion, municipioExtraido);
                 if (coords) {
-                    processedList.push({ ...info, lat: coords.lat, lng: coords.lng, municipio: municipioExtraido || "Tenerife" });
+                    processedList.push({ 
+                        ...info, 
+                        lat: coords.lat, 
+                        lng: coords.lng, 
+                        municipio: municipioExtraido || "Tenerife"
+                    });
                 } else {
-                    // Fallback final: meterla sin coords para que al menos salga en lista
                     processedList.push({ ...info, lat: null, lng: null, municipio: municipioExtraido || "Tenerife" });
                 }
             }
