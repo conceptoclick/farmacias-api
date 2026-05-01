@@ -283,25 +283,29 @@ app.get('/api/guardia/cerca', async (req, res) => {
     }
 
     let searchData = cacheGuardias;
-
     // SI EL CACHÉ ESTÁ VACÍO (Cold Start), hacemos un scrape RÁPIDO solo de la zona del usuario
     if (searchData.length === 0) {
         console.log("⚡ Caché vacío, realizando búsqueda live rápida para el usuario...");
         const relevantZones = getNearestZones(userLat, userLng);
         const liveRaw = await fetchGuardiasDeZonas(relevantZones);
         
+        // LIVE FALLBACK: Procesamos todo lo que diga el scraper sin tirar nada
         searchData = liveRaw.map(info => {
             const match = datos.find(d => {
                 const dNorm = normalizeName(d.nombre);
                 return dNorm === info.norm || dNorm.includes(info.norm) || info.norm.includes(dNorm);
             });
-            if (match) return { ...info, lat: match.lat, lng: match.lng, municipio: match.municipio };
             
-            // Si no hay match, la devolvemos igual (sin lat/lng de momento) para no perderla
-            return { ...info, lat: null, lng: null, municipio: "Tenerife (Cargando...)" };
+            if (match) {
+                return { ...info, lat: match.lat, lng: match.lng, municipio: match.municipio };
+            }
+            
+            // Si no está en la maestra, NO LA TIRAMOS. La devolvemos con lat null 
+            // El frontend o el sistema de geocoding se encargará de posicionarla
+            return { ...info, lat: null, lng: null, municipio: "Tenerife" };
         });
 
-        // Disparar el refresco completo de la isla en segundo plano (sin await)
+        // Lanzar el refresco profundo en background
         updateGuardiasCache();
     }
 
